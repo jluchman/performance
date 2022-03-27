@@ -125,9 +125,9 @@ determinations can be obtained.</p>
     
 
 
-<p>The input model is parsed using <code><a href="https://easystats.github.io/insight/reference/find_predictors.html" class="external-link">insight::find_predictors</a></code> and does not
+<p>The input model is parsed using <code><a href="https://easystats.github.io/insight/reference/find_predictors.html" class="external-link">insight::find_predictors</a></code>, does not
 yet support interactions, transformations, or offsets applied in the
-R formula and will fail with an error when detected.</p>
+R formula, and will fail with an error if any such terms are detected.</p>
 <p>The model submitted must accept an formula object as a <code>formula</code>
 argument.  In addition, the model object must accept the data on which
 the model is estimated as a <code>data</code> argument.  Formulas submitted
@@ -140,6 +140,9 @@ is_multivariate", "is_zero_inflated",
 or "is_hurdle" are not supported at current.</p>
 <p>When <code><a href="r2.html">performance::r2</a></code> returns multiple values, only the first is used
 by default.</p>
+<p>The underlying <code><a href="https://rdrr.io/pkg/domir/man/domin.html" class="external-link">domir::domin</a></code> function that implements the dominance
+statistic and designation computations has only been tested to R version
+3.5 and will fail with an error if called in R versions &lt; 3.5.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
