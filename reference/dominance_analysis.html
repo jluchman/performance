@@ -75,14 +75,14 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>model</dt>
-<dd><p>A model object supported by <code><a href="r2.html">performance::r2()</a></code>. See Notes section.</p></dd>
+<dd><p>A model object supported by <code><a href="r2.html">performance::r2()</a></code>. See 'Details'.</p></dd>
 <dt>...</dt>
 <dd><p>Not used at current.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Object of class "dominance_analysis".
-An object of class "dominance_analysis" is a list composed of the
+    <p>Object of class <code>"dominance_analysis"</code>.
+An object of class <code>"dominance_analysis"</code> is a list composed of the
 following elements:</p><dl><dt><code>general_dominance</code></dt>
 <dd><p>Vector of general dominance statistics.</p></dd>
 
@@ -108,8 +108,8 @@ in each column dominates the predictor in each row is represented in the
 logical value in the matrix.</p></dd>
 
 <dt><code>model_R2</code></dt>
-<dd><p>Value of R2 value returned by the <code>r2</code>
-method for the model.</p></dd>
+<dd><p>Value of R2 value returned by the <code><a href="r2.html">r2()</a></code> method for
+the model.</p></dd>
 
 
 </dl></div>
@@ -118,12 +118,6 @@ method for the model.</p></dd>
     <p>Computes two decompositions of the model's R2 and returns
 a matrix of designations from which predictor relative importance
 determinations can be obtained.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="notes">Notes<a class="anchor" aria-label="anchor" href="#notes"></a></h2>
-    
-
-
 <p>The input model is parsed using <code><a href="https://easystats.github.io/insight/reference/find_predictors.html" class="external-link">insight::find_predictors()</a></code>, does not
 yet support interactions, transformations, or offsets applied in the
 R formula, and will fail with an error if any such terms are detected.</p>
