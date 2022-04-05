@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,16 +88,16 @@ May be abbreviated.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Invisibly returns the p-value of the test statistics. A p-value
-&lt; 0.05 indicates a significant deviation from normal distribution</p>
+    <p>The p-value of the test statistics. A p-value &lt; 0.05 indicates a
+significant deviation from normal distribution.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>check_normality()</code> calls <code><a href="https://rdrr.io/r/stats/shapiro.test.html" class="external-link">stats::shapiro.test</a></code>
-and checks the standardized residuals (or Studentized residuals for mixed
-models) for normal distribution. Note that this formal test almost always
-yields significant results for the distribution of residuals and visual
-inspection (e.g. Q-Q plots) are preferable.</p>
+    <p><code>check_normality()</code> calls <code><a href="https://rdrr.io/r/stats/shapiro.test.html" class="external-link">stats::shapiro.test</a></code> and checks the
+standardized residuals (or Studentized residuals for mixed models) for
+normal distribution. Note that this formal test almost always yields
+significant results for the distribution of residuals and visual inspection
+(e.g. Q-Q plots) are preferable.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -120,8 +120,6 @@ implemented in the
 <span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">check_normality</span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: residuals appear as normally distributed (p = 0.230).</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-plt img"><img src="check_normality-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="co"># QQ-plot</span></span>

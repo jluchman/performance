@@ -3,22 +3,20 @@
 power is a delicate and often complex procedure, with many limitations and
 prerequisites. Moreover, many tests exist, each coming with its own
 interpretation, and set of strengths and weaknesses.
- 
 The test_performance() function runs the most relevant and appropriate
 tests based on the type of input (for instance, whether the models are
 nested or not). However, it still requires the user to understand what the
 tests are and what they do in order to prevent their misinterpretation. See
-the details section for more information regarding the different tests
-and their interpretation.'><title>Test if Models are Different — test_bf • performance</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Test if Models are Different — test_bf"><meta property="og:description" content='Testing whether models are "different" in terms of accuracy or explanatory
+the Details section for more information regarding the different tests
+and their interpretation.'><title>Test if models are different — test_bf • performance</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Test if models are different — test_bf"><meta property="og:description" content='Testing whether models are "different" in terms of accuracy or explanatory
 power is a delicate and often complex procedure, with many limitations and
 prerequisites. Moreover, many tests exist, each coming with its own
 interpretation, and set of strengths and weaknesses.
- 
 The test_performance() function runs the most relevant and appropriate
 tests based on the type of input (for instance, whether the models are
 nested or not). However, it still requires the user to understand what the
 tests are and what they do in order to prevent their misinterpretation. See
-the details section for more information regarding the different tests
+the Details section for more information regarding the different tests
 and their interpretation.'><meta property="og:image" content="https://easystats.github.io/performance/reference/figures/card.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@easystats4u"><meta name="twitter:site" content="@easystats4u"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -30,7 +28,7 @@ and their interpretation.'><meta property="og:image" content="https://easystats.
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +76,7 @@ and their interpretation.'><meta property="og:image" content="https://easystats.
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Test if Models are Different</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Test if models are different</h1>
       <small class="dont-index">Source: <a href="https://github.com/easystats/performance/blob/HEAD/R/test_bf.R" class="external-link"><code>R/test_bf.R</code></a>, <a href="https://github.com/easystats/performance/blob/HEAD/R/test_likelihoodratio.R" class="external-link"><code>R/test_likelihoodratio.R</code></a>, <a href="https://github.com/easystats/performance/blob/HEAD/R/test_performance.R" class="external-link"><code>R/test_performance.R</code></a>, and 2 more</small>
       <div class="d-none name"><code>test_performance.Rd</code></div>
     </div>
@@ -87,13 +85,12 @@ and their interpretation.'><meta property="og:image" content="https://easystats.
     <p>Testing whether models are "different" in terms of accuracy or explanatory
 power is a delicate and often complex procedure, with many limitations and
 prerequisites. Moreover, many tests exist, each coming with its own
-interpretation, and set of strengths and weaknesses.
-<br><br>
-The <code>test_performance()</code> function runs the most relevant and appropriate
+interpretation, and set of strengths and weaknesses.</p>
+<p>The <code>test_performance()</code> function runs the most relevant and appropriate
 tests based on the type of input (for instance, whether the models are
 <em>nested</em> or not). However, it still requires the user to understand what the
 tests are and what they do in order to prevent their misinterpretation. See
-the <strong>details</strong> section for more information regarding the different tests
+the <em>Details</em> section for more information regarding the different tests
 and their interpretation.</p>
     </div>
 
@@ -106,7 +103,7 @@ and their interpretation.</p>
 
 <span class="fu">test_likelihoodratio</span><span class="op">(</span><span class="va">...</span>, estimator <span class="op">=</span> <span class="st">"ML"</span><span class="op">)</span>
 
-<span class="fu">performance_lrt</span><span class="op">(</span><span class="va">...</span>, estimator <span class="op">=</span> <span class="st">"ML"</span><span class="op">)</span>
+<span class="fu">performance_lrt</span><span class="op">(</span><span class="va">...</span><span class="op">)</span>
 
 <span class="fu">test_lrt</span><span class="op">(</span><span class="va">...</span>, estimator <span class="op">=</span> <span class="st">"ML"</span><span class="op">)</span>
 
@@ -129,15 +126,9 @@ lines to a specified limit.</p></dd>
 <dt>estimator</dt>
 <dd><p>Applied when comparing regression models using
 <code>test_likelihoodratio()</code>. Corresponds to the different estimators for
-the standard deviation of the errors. If <code>estimator="OLS"</code> (default),
-then it uses the same method as <code>anova(..., test="LRT")</code> implemented
-in base R, i.e., scaling by n-k (the unbiased OLS estimator) and using this
-estimator under the alternative hypothesis. If <code>estimator="ML"</code>, which
-is for instance used by <code>lrtest(...)</code> in package <span class="pkg">lmtest</span>, the
-scaling is done by n (the biased ML estimator) and the estimator under the
-null hypothesis. In moderately large samples, the differences should be
-negligible, but it is possible that OLS would perform slightly better in
-small samples with Gaussian errors.</p></dd>
+the standard deviation of the errors. Defaults to <code>"OLS"</code> for linear models,
+<code>"ML"</code> for all other models (including mixed models), or <code>"REML"</code> for
+linear mixed models when these have the same fixed effects. See 'Details'.</p></dd>
 <dt>reference</dt>
 <dd><p>This only applies when models are non-nested, and determines
 which model should be taken as a reference, against which all the other
@@ -165,14 +156,12 @@ user to reverse the order from largest to smallest. The test then shows
 whether a more parsimonious model, or whether adding a predictor, results in
 a significant difference in the model's performance. In this case, models are
 usually compared <em>sequentially</em>: m2 is tested against m1, m3 against m2,
-m4 against m3, etc.
-<br><br>
-Two models are considered as <em>"non-nested"</em> if their predictors are
+m4 against m3, etc.</p>
+<p>Two models are considered as <em>"non-nested"</em> if their predictors are
 different. For instance, <code>model1 (y ~ x1 + x2)</code> and <code>model2 (y ~ x3 + x4)</code>.
 In the case of non-nested models, all models are usually compared
-against the same <em>reference</em> model (by default, the first of the list).
-<br><br>
-Nesting is detected via the <code><a href="https://easystats.github.io/insight/reference/is_nested_models.html" class="external-link">insight::is_nested_models()</a></code> function.
+against the same <em>reference</em> model (by default, the first of the list).</p>
+<p>Nesting is detected via the <code><a href="https://easystats.github.io/insight/reference/is_nested_models.html" class="external-link">insight::is_nested_models()</a></code> function.
 Note that, apart from the nesting, in order for the tests to be valid,
 other requirements have often to be the fulfilled. For instance, outcome
 variables (the response) must be the same. You cannot meaningfully test
@@ -180,36 +169,75 @@ whether apples are significantly different from oranges!</p>
 </div>
 
 <div class="section">
-<h3 id="tests-description">Tests Description<a class="anchor" aria-label="anchor" href="#tests-description"></a></h3>
+<h3 id="estimator-of-the-standard-deviation">Estimator of the standard deviation<a class="anchor" aria-label="anchor" href="#estimator-of-the-standard-deviation"></a></h3>
+<p>The estimator is relevant when comparing regression models using
+<code>test_likelihoodratio()</code>. If <code>estimator = "OLS"</code>, then it uses the same
+method as <code>anova(..., test = "LRT")</code> implemented in base R, i.e., scaling
+by n-k (the unbiased OLS estimator) and using this estimator under the
+alternative hypothesis. If <code>estimator = "ML"</code>, which is for instance used
+by <code>lrtest(...)</code> in package <strong>lmtest</strong>, the scaling is done by n (the
+biased ML estimator) and the estimator under the null hypothesis. In
+moderately large samples, the differences should be negligible, but it
+is possible that OLS would perform slightly better in small samples with
+Gaussian errors. For <code>estimator = "REML"</code>, the LRT is based on the REML-fit
+log-likelihoods of the models. Note that not all types of estimators are
+available for all model classes.</p>
+</div>
 
+<div class="section">
+<h3 id="reml-versus-ml-estimator">REML versus ML estimator<a class="anchor" aria-label="anchor" href="#reml-versus-ml-estimator"></a></h3>
+<p>When <code>estimator = "ML"</code>, which is the default for linear mixed models (unless
+they share the same fixed effects), values from information criteria (AIC,
+AICc) are based on the ML-estimator, while the default behaviour of <code><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC()</a></code>
+may be different (in particular for linear mixed models from <strong>lme4</strong>, which
+sets <code>REML = TRUE</code>). This default in <code>test_likelihoodratio()</code> intentional,
+because comparing information criteria based on REML fits requires the same
+fixed effects for all models, which is often not the case. Thus, while
+<code><a href="https://rdrr.io/pkg/lme4/man/merMod-class.html" class="external-link">anova.merMod()</a></code> automatically refits all models to REML when performing a
+LRT, <code>test_likelihoodratio()</code> checks if a comparison based on REML fits is
+indeed valid, and if so, uses REML as default (else, ML is the default).
+Set the <code>estimator</code> argument explicitely to override the default behaviour.</p>
+</div>
+
+<div class="section">
+<h3 id="tests-description">Tests Description<a class="anchor" aria-label="anchor" href="#tests-description"></a></h3>
 
 <ul><li><p><strong>Bayes factor for Model Comparison</strong> - <code>test_bf()</code>: If all
 models were fit from the same data, the returned <code>BF</code> shows the Bayes
 Factor (see <code><a href="https://easystats.github.io/bayestestR/reference/bayesfactor_models.html" class="external-link">bayestestR::bayesfactor_models()</a></code>) for each model against
 the reference model (which depends on whether the models are nested or
 not). Check out
-<a href="https://easystats.github.io/bayestestR/articles/bayes_factors.html#bayesfactor_models" class="external-link">this vignette</a> for more details.</p></li>
+<a href="https://easystats.github.io/bayestestR/articles/bayes_factors.html#bayesfactor_models" class="external-link">this vignette</a>
+for more details.</p></li>
 <li><p><strong>Wald's F-Test</strong> - <code>test_wald()</code>: The Wald test is a rough
 approximation of the Likelihood Ratio Test. However, it is more applicable
 than the LRT: you can often run a Wald test in situations where no other
 test can be run. Importantly, this test only makes statistical sense if the
-models are nested.
-<br>
-Note: this test is also available in base R through the
-<code><a href="https://rdrr.io/pkg/lavaan/man/lavTestLRT.html" class="external-link">anova()</a></code> function. It returns an <code>F-value</code> column
-as a statistic and its associated <code>p-value</code>.</p></li>
+models are nested.</p>
+<p>Note: this test is also available in base R
+through the <code><a href="https://rdrr.io/pkg/lavaan/man/lavTestLRT.html" class="external-link">anova()</a></code> function. It returns an <code>F-value</code> column
+as a statistic and its associated p-value.</p></li>
 <li><p><strong>Likelihood Ratio Test (LRT)</strong> - <code>test_likelihoodratio()</code>:
 The LRT tests which model is a better (more likely) explanation of the
 data. Likelihood-Ratio-Test (LRT) gives usually somewhat close results (if
 not equivalent) to the Wald test and, similarly, only makes sense for
-nested models. However, Maximum likelihood tests make stronger assumptions
+nested models. However, maximum likelihood tests make stronger assumptions
 than method of moments tests like the F-test, and in turn are more
 efficient. Agresti (1990) suggests that you should use the LRT instead of
 the Wald test for small sample sizes (under or about 30) or if the
-parameters are large.<br> Note: for regression models, this is similar to
-<code>anova(..., test="LRT")</code> (on models) or <code>lmtest::lrtest(...)</code>,
-depending on the <code>estimator</code> argument. For <code>lavaan</code> models (SEM,
-CFA), the function calls <code><a href="https://rdrr.io/pkg/lavaan/man/lavTestLRT.html" class="external-link">lavaan::lavTestLRT()</a></code>.</p></li>
+parameters are large.</p>
+<p>Note: for regression models, this is similar to
+<code>anova(..., test="LRT")</code> (on models) or <code>lmtest::lrtest(...)</code>, depending
+on the <code>estimator</code> argument. For <strong>lavaan</strong> models (SEM, CFA), the function
+calls <code><a href="https://rdrr.io/pkg/lavaan/man/lavTestLRT.html" class="external-link">lavaan::lavTestLRT()</a></code>.</p>
+<p>For models with log-transformed
+response variables, <code><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik()</a></code> returns a wrong log-likelihood. However,
+<code>test_likelihoodratio()</code> calls <code><a href="https://easystats.github.io/insight/reference/get_loglikelihood.html" class="external-link">insight::get_loglikelihood()</a></code> with
+<code>check_response=TRUE</code>, which returns a corrected log-likelihood value
+for models with transformed response variables (like log- or
+sqrt-transformation). Furthermore, since the LRT only accepts nested
+models (i.e. models that differ in their fixed effects), the computed
+log-likelihood is always based on the ML estimator, not on the REML fits.</p></li>
 <li><p><strong>Vuong's Test</strong> - <code>test_vuong()</code>: Vuong's (1989) test can
 be used both for nested and non-nested models, and actually consists of two
 tests.</p><ul><li><p>The <strong>Test of Distinguishability</strong> (the <code>Omega2</code> column and
@@ -219,7 +247,7 @@ significant, it means the models are distinguishable.</p></li>
 <li><p>The <strong>Robust Likelihood Test</strong> (the <code>LR</code> column and its
 associated p-value) indicates whether each model fits better than the
 reference model. If the models are nested, then the test works as a robust
-LRT. The code for this function is adapted from the <code>nonnest2</code>
+LRT. The code for this function is adapted from the <strong>nonnest2</strong>
 package, and all credit go to their authors.</p></li>
 </ul></li>
 </ul></div>
@@ -274,7 +302,7 @@ the performance indices of many different models.</p></div>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Equivalent to lmtest::lrtest(m1, m2, m3)</span></span>
 <span class="r-in"><span class="fu">test_likelihoodratio</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span>, estimator <span class="op">=</span> <span class="st">"ML"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Likelihood-Ratio-Test (LRT) for Model Comparison</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Likelihood-Ratio-Test (LRT) for Model Comparison (ML-estimator)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Name | Model | df | df_diff | Chi2 |     p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------</span>
@@ -284,7 +312,7 @@ the performance indices of many different models.</p></div>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Equivalent to anova(m1, m2, m3, test='LRT')</span></span>
 <span class="r-in"><span class="fu">test_likelihoodratio</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span>, estimator <span class="op">=</span> <span class="st">"OLS"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Likelihood-Ratio-Test (LRT) for Model Comparison</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Likelihood-Ratio-Test (LRT) for Model Comparison (OLS-estimator)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Name | Model | df | df_diff | Chi2 |     p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------</span>
@@ -292,37 +320,20 @@ the performance indices of many different models.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> m2   |    lm |  5 |       2 | 0.15 | 0.927</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> m3   |    lm |  7 |       2 | 3.31 | 0.191</span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu">test_vuong</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span> <span class="co"># nonnest2::vuongtest(m1, m2, nested=TRUE)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Name | Model |   Omega2 | p (Omega2) |   LR | p (LR)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ----------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m1   |    lm |          |            |      |       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m2   |    lm | 9.54e-04 |      0.935 | 0.15 |  0.919</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m3   |    lm |     0.02 |      0.081 | 3.41 |  0.099</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Models were detected as nested and are compared in sequential order.</span>
+<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st">"CompQuadForm"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in">  <span class="fu">test_vuong</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span> <span class="co"># nonnest2::vuongtest(m1, m2, nested=TRUE)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Non-nested Models</span></span>
-<span class="r-in"><span class="co"># -----------------</span></span>
-<span class="r-in"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Petal.Width</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Petal.Length</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
+<span class="r-in">  <span class="co"># Non-nested Models</span></span>
+<span class="r-in">  <span class="co"># -----------------</span></span>
+<span class="r-in">  <span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Petal.Width</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
+<span class="r-in">  <span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Petal.Length</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
+<span class="r-in">  <span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu">test_performance</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Name | Model |      BF | Omega2 | p (Omega2) |    LR | p (LR)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m1   |    lm |         |        |            |       |       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m2   |    lm |  &gt; 1000 |   0.19 |     &lt; .001 | -4.57 | &lt; .001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m3   |    lm | &lt; 0.001 |   0.12 |     &lt; .001 |  2.51 | 0.006 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Each model is compared to m1.</span>
-<span class="r-in"><span class="fu">test_bf</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">Bayes Factors for Model Comparison</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      Model              BF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [m2] Petal.Length 2.90e+10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [m3] Species      2.00e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Against Denominator: <span style="color: #00BBBB;">[m1] Petal.Width</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> *   Bayes Factor Type: <span style="color: #00BBBB;">BIC approximation</span></span>
-<span class="r-in"><span class="fu">test_vuong</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span> <span class="co"># nonnest2::vuongtest(m1, m2)</span></span>
+<span class="r-in">  <span class="fu">test_performance</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu">test_bf</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu">test_vuong</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span> <span class="co"># nonnest2::vuongtest(m1, m2)</span></span>
+<span class="r-in"><span class="op">}</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: CompQuadForm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Name | Model | Omega2 | p (Omega2) |    LR | p (LR)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> m1   |    lm |        |            |       |       </span>
