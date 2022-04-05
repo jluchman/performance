@@ -75,8 +75,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>model</dt>
-<dd><p>An <code>{insight}</code>- and <code><a href="r2.html">performance::r2</a></code>-supported model object
-of specific classes.  See Notes section.</p></dd>
+<dd><p>A model object supported by <code><a href="r2.html">performance::r2()</a></code>. See Notes section.</p></dd>
 <dt>...</dt>
 <dd><p>Not used at current.</p></dd>
 </dl></div>
@@ -125,7 +124,7 @@ determinations can be obtained.</p>
     
 
 
-<p>The input model is parsed using <code><a href="https://easystats.github.io/insight/reference/find_predictors.html" class="external-link">insight::find_predictors</a></code>, does not
+<p>The input model is parsed using <code><a href="https://easystats.github.io/insight/reference/find_predictors.html" class="external-link">insight::find_predictors()</a></code>, does not
 yet support interactions, transformations, or offsets applied in the
 R formula, and will fail with an error if any such terms are detected.</p>
 <p>The model submitted must accept an formula object as a <code>formula</code>
@@ -133,14 +132,14 @@ argument.  In addition, the model object must accept the data on which
 the model is estimated as a <code>data</code> argument.  Formulas submitted
 using object references (i.e., <code>lm(mtcars$mpg ~ mtcars$vs)</code>) and
 functions that accept data as a non-<code>data</code> argument
-(e.g., <code><a href="https://rdrr.io/pkg/survey/man/svyglm.html" class="external-link">survey::svyglm</a></code> uses <code>design</code>) will fail.</p>
-<p>Models that return <code>TRUE</code> for the <code><a href="https://easystats.github.io/insight/reference/model_info.html" class="external-link">insight::model_info</a></code>
+(e.g., <code><a href="https://rdrr.io/pkg/survey/man/svyglm.html" class="external-link">survey::svyglm()</a></code> uses <code>design</code>) will fail.</p>
+<p>Models that return <code>TRUE</code> for the <code><a href="https://easystats.github.io/insight/reference/model_info.html" class="external-link">insight::model_info()</a></code>
 function's values "is_bayesian", "is_mixed", "is_gam",
 is_multivariate", "is_zero_inflated",
 or "is_hurdle" are not supported at current.</p>
-<p>When <code><a href="r2.html">performance::r2</a></code> returns multiple values, only the first is used
+<p>When <code><a href="r2.html">performance::r2()</a></code> returns multiple values, only the first is used
 by default.</p>
-<p>The underlying <code><a href="https://rdrr.io/pkg/domir/man/domin.html" class="external-link">domir::domin</a></code> function that implements the dominance
+<p>The underlying <code><a href="https://rdrr.io/pkg/domir/man/domin.html" class="external-link">domir::domin()</a></code> function that implements the dominance
 statistic and designation computations has only been tested to R version
 3.5 and will fail with an error if called in R versions &lt; 3.5.</p>
     </div>
@@ -175,14 +174,12 @@ using dominance analysis: domin and domme. Stata Journal 21(2),
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/jluchman/domir" class="external-link">"domir"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">(</span><span class="va">R.version</span><span class="op">$</span><span class="va">major</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">|</span> <span class="op">(</span><span class="va">R.version</span><span class="op">$</span><span class="va">major</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">&amp;&amp;</span> <span class="va">R.version</span><span class="op">$</span><span class="va">minor</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/jluchman/domir" class="external-link">"domir"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">carb</span> <span class="op">+</span> <span class="va">mpg</span>, data <span class="op">=</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/mtcars.html" class="external-link">mtcars</a></span>,</span>
 <span class="r-in">           family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="fu"><a href="r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
-<span class="r-in"></span>
 <span class="r-in">  <span class="fu">dominance_analysis</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
-<span class="r-in"></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: domir</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Dominance Analysis Results</span></span>
