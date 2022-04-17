@@ -69,13 +69,40 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dominance_analysis</span><span class="op">(</span><span class="va">model</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dominance_analysis</span><span class="op">(</span>
+  <span class="va">model</span>,
+  sets <span class="op">=</span> <span class="cn">NULL</span>,
+  all <span class="op">=</span> <span class="cn">NULL</span>,
+  conditional <span class="op">=</span> <span class="cn">TRUE</span>,
+  complete <span class="op">=</span> <span class="cn">TRUE</span>,
+  <span class="va">...</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>model</dt>
 <dd><p>A model object supported by <code><a href="r2.html">performance::r2()</a></code>. See 'Details'.</p></dd>
+<dt>sets</dt>
+<dd><p>A (named) list of formula objects with no left hand
+side/response.  A named list uses the name provided each element
+as the label for the set.</p>
+<p>Predictors in each formula are bound together as a set in the dominance
+analysis and dominance statistics and designations are computed for
+the predictors together.  Predictors in <code>sets</code> must be present in the model
+submitted to the <code>model</code> argument and cannot be in the <code>all</code> argument.</p></dd>
+<dt>all</dt>
+<dd><p>A formula with no left hand side/response.</p>
+<p>Predictors in the formula are included in each subset in the dominance
+analysis and the R2 value associated with them is subtracted from the
+overall value.  Predictors in <code>all</code> must be present in the model
+submitted to the <code>model</code> argument and cannot be in the <code>sets</code> argument.</p></dd>
+<dt>conditional</dt>
+<dd><p>Logical.  If <code>FALSE</code> then conditional dominance matrix is not computed.</p>
+<p>If conditional dominance is not desired as an importance criterion, avoiding computing the conditional dominance matrix can save computation time.</p></dd>
+<dt>complete</dt>
+<dd><p>Logical.  If <code>FALSE</code> then complete dominance matrix is not computed.</p>
+<p>If complete dominance is not desired as an importance criterion, avoiding computing complete dominance designations can save computation time.</p></dd>
 <dt>...</dt>
 <dd><p>Not used at current.</p></dd>
 </dl></div>
@@ -98,18 +125,22 @@ statistics.</p></dd>
 <dd><p>Matrix of conditional dominance
 statistics.  Each row represents a predictor; each column represents an
 the average increment to R2 with a specific number of predictors in
-the model.</p></dd>
+the model or <code>NULL</code>.</p></dd>
 
 <dt><code>complete_dominance</code></dt>
 <dd><p>Logical matrix of complete dominance
 designations. The predictors represented in each row are
 cross-referenced with predictors in each column.  Whether the predictor
 in each column dominates the predictor in each row is represented in the
-logical value in the matrix.</p></dd>
+logical value in the matrix or <code>NULL</code>.</p></dd>
 
 <dt><code>model_R2</code></dt>
 <dd><p>Value of R2 value returned by the <code><a href="r2.html">r2()</a></code> method for
 the model.</p></dd>
+
+<dt><code>all_subset_R2</code></dt>
+<dd><p>Value of R2 associated with the predictors in the
+<code>all</code> argument or <code>NULL</code>.</p></dd>
 
 
 </dl></div>
@@ -176,27 +207,38 @@ using dominance analysis: domin and domme. Stata Journal 21(2),
 <span class="r-in">  <span class="fu">dominance_analysis</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: domir</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     parameter subset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 (Intercept)   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         cyl   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        carb   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         mpg   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     parameter   subset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 (Intercept) constant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         cyl      cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        carb     carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         mpg      mpg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Dominance Analysis Results</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model R2 Value: 0.741 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model R2 Value:  0.741 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> General Dominance Statistics</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      General Dominance Standardized Ranks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl              0.366        0.493     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> carb             0.178        0.241     3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg              0.197        0.266     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> parameter   | general_dominance | standardized | ranks |   subset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) |                   |              |       | constant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl         |             0.366 |        0.493 |     1 |      cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> carb        |             0.178 |        0.241 |     3 |     carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg         |             0.197 |        0.266 |     2 |      mpg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Conditional Dominance Statistics</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      Preds: 1 Preds: 2 Preds: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl     0.654    0.254    0.190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> carb    0.394    0.066    0.074</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg     0.474    0.085    0.032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> subset | IVs_1 | IVs_2 | IVs_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl    | 0.654 | 0.254 | 0.190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> carb   | 0.394 | 0.066 | 0.074</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg    | 0.474 | 0.085 | 0.032</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Complete Dominance Designations</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      Dominated by: cyl Dominated by: carb Dominated by: mpg</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl               &lt;NA&gt;              FALSE             FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> carb              TRUE               &lt;NA&gt;              &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg               TRUE               &lt;NA&gt;              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> subset | Dmnated_cyl | Dmnated_carb | Dmnated_mpg</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl    |             |        FALSE |       FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> carb   |        TRUE |              |            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg    |        TRUE |              |            </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
