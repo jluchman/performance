@@ -13,6 +13,9 @@
     <loc>https://easystats.github.io/performance/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>https://easystats.github.io/performance/articles/check_model.html</loc>
+  </url>
+  <url>
     <loc>https://easystats.github.io/performance/articles/compare.html</loc>
   </url>
   <url>
@@ -37,6 +40,9 @@
     <loc>https://easystats.github.io/performance/reference/check_autocorrelation.html</loc>
   </url>
   <url>
+    <loc>https://easystats.github.io/performance/reference/check_clusterstructure.html</loc>
+  </url>
+  <url>
     <loc>https://easystats.github.io/performance/reference/check_collinearity.html</loc>
   </url>
   <url>
@@ -44,6 +50,9 @@
   </url>
   <url>
     <loc>https://easystats.github.io/performance/reference/check_distribution.html</loc>
+  </url>
+  <url>
+    <loc>https://easystats.github.io/performance/reference/check_factorstructure.html</loc>
   </url>
   <url>
     <loc>https://easystats.github.io/performance/reference/check_heterogeneity_bias.html</loc>
@@ -82,6 +91,9 @@
     <loc>https://easystats.github.io/performance/reference/check_sphericity.html</loc>
   </url>
   <url>
+    <loc>https://easystats.github.io/performance/reference/check_symmetry.html</loc>
+  </url>
+  <url>
     <loc>https://easystats.github.io/performance/reference/check_zeroinflation.html</loc>
   </url>
   <url>
@@ -97,9 +109,6 @@
     <loc>https://easystats.github.io/performance/reference/display.performance_model.html</loc>
   </url>
   <url>
-    <loc>https://easystats.github.io/performance/reference/dominance_analysis.html</loc>
-  </url>
-  <url>
     <loc>https://easystats.github.io/performance/reference/icc.html</loc>
   </url>
   <url>
@@ -107,6 +116,9 @@
   </url>
   <url>
     <loc>https://easystats.github.io/performance/reference/item_difficulty.html</loc>
+  </url>
+  <url>
+    <loc>https://easystats.github.io/performance/reference/item_discrimination.html</loc>
   </url>
   <url>
     <loc>https://easystats.github.io/performance/reference/item_intercor.html</loc>
@@ -145,10 +157,16 @@
     <loc>https://easystats.github.io/performance/reference/model_performance.stanreg.html</loc>
   </url>
   <url>
+    <loc>https://easystats.github.io/performance/reference/performance-package.html</loc>
+  </url>
+  <url>
     <loc>https://easystats.github.io/performance/reference/performance_accuracy.html</loc>
   </url>
   <url>
     <loc>https://easystats.github.io/performance/reference/performance_aicc.html</loc>
+  </url>
+  <url>
+    <loc>https://easystats.github.io/performance/reference/performance_cv.html</loc>
   </url>
   <url>
     <loc>https://easystats.github.io/performance/reference/performance_hosmer.html</loc>

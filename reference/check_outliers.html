@@ -8,7 +8,7 @@ classified as an outlier by at least one method. The decision rule used by
 default is to classify as outliers observations which composite outlier
 score is superior or equal to 0.5 (i.e., that were classified as outliers
 by at least half of the methods). See the Details section below
-for a description of the methods.'><title>Outliers detection (check for influential observations) — check_outliers • performance</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Outliers detection (check for influential observations) — check_outliers"><meta property="og:description" content='Checks for and locates influential observations (i.e.,
+for a description of the methods.'><title>Outliers detection (check for influential observations) — check_outliers • performance</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.6/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.6/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.6/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Outliers detection (check for influential observations) — check_outliers"><meta property="og:description" content='Checks for and locates influential observations (i.e.,
 "outliers") via several distance and/or clustering methods. If several
 methods are selected, the returned "Outlier" vector will be a composite
 outlier score, made of the average of the binary (0 or 1) results of each
@@ -24,11 +24,11 @@ for a description of the methods.'><meta property="og:image" content="https://ea
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-default navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.10.4.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,36 +36,59 @@ for a description of the methods.'><meta property="og:image" content="https://ea
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item">
-  <a class="nav-link" href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+      <ul class="navbar-nav me-auto"><li class="active nav-item">
+  <a class="nav-link" href="../reference/index.html" aria-label="Reference">
+    <span class="fa fa fa fa-file-code"></span>
      
+    Reference
   </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="../news/index.html">News</a>
-</li>
-<li class="active nav-item">
-  <a class="nav-link" href="../reference/index.html">Features</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../articles/compare.html">Compare, Test and Select Models</a>
+  <a class="nav-link" href="../articles/index.html" aria-label="Articles">
+    <span class="fa fa fa fa-book-reader"></span>
+     
+    Articles
+  </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="../articles/r2.html">Explained Variance (R-Squared)</a>
+  <a class="nav-link" href="../news/index.html" aria-label="News">
+    <span class="fa fa fa fa-newspaper"></span>
+     
+    News
+  </a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"><li class="nav-item">
+      <ul class="navbar-nav"><li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--easystats" aria-label="easystats">
+    <span class="fab fa fab fa-r-project"></span>
+     
+    easystats
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdown--easystats">
+    <a class="external-link dropdown-item" href="https://easystats.github.io/bayestestR/">bayestestR</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/correlation/">correlation</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/datawizard/">datawizard</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/easystats/">easystats</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/effectsize/">effectsize</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/insight/">insight</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/modelbased/">modelbased</a>
+    <a class="dropdown-item" href="https://easystats.github.io/performance/">performance</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/parameters/">parameters</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/report/">report</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/see/">see</a>
+  </div>
+</li>
+<li class="nav-item">
   <a class="external-link nav-link" href="http://twitter.com/easystats4u" aria-label="Twitter">
     <span class="fa fa-twitter"></span>
      
   </a>
 </li>
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/easystats/performance/" aria-label="GitHub">
-    <span class="fa fa-github"></span>
+  <a class="external-link nav-link" href="https://github.com/easystats/performance/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -96,42 +119,69 @@ for a description of the methods.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">check_outliers</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for default</span>
-<span class="fu">check_outliers</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cook"</span>, <span class="st">"pareto"</span><span class="op">)</span>, threshold <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for numeric</span>
-<span class="fu">check_outliers</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"zscore_robust"</span>, threshold <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for data.frame</span>
-<span class="fu">check_outliers</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"mahalanobis"</span>, threshold <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">check_outliers</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cook"</span>, <span class="st">"pareto"</span><span class="op">)</span>,</span>
+<span>  threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  ID <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for numeric</span></span>
+<span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"zscore_robust"</span>, threshold <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for data.frame</span></span>
+<span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"mahalanobis"</span>, threshold <span class="op">=</span> <span class="cn">NULL</span>, ID <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>A model or a data.frame object.</p></dd>
+
+
 <dt>...</dt>
-<dd><p>When <code>method = "ics"</code>, further arguments in <code>...</code> are
-passed down to <code><a href="https://rdrr.io/pkg/ICSOutlier/man/ics.outlier.html" class="external-link">ICSOutlier::ics.outlier()</a></code>.</p></dd>
+<dd><p>When <code>method = "ics"</code>, further arguments in <code>...</code> are passed
+down to <code><a href="https://rdrr.io/pkg/ICSOutlier/man/ics.outlier.html" class="external-link">ICSOutlier::ics.outlier()</a></code>. When <code>method = "mahalanobis"</code>,
+they are  passed down to <code><a href="https://rdrr.io/r/stats/mahalanobis.html" class="external-link">stats::mahalanobis()</a></code>.</p></dd>
+
+
 <dt>method</dt>
-<dd><p>The outlier detection method(s). Can be "all" or some of
-c("cook", "pareto", "zscore", "zscore_robust", "iqr", "eti", "hdi", "bci",
-"mahalanobis", "mahalanobis_robust", "mcd", "ics", "optics", "lof").</p></dd>
+<dd><p>The outlier detection method(s). Can be <code>"all"</code> or some of
+<code>"cook"</code>, <code>"pareto"</code>, <code>"zscore"</code>, <code>"zscore_robust"</code>, <code>"iqr"</code>, <code>"ci"</code>, <code>"eti"</code>,
+<code>"hdi"</code>, <code>"bci"</code>, <code>"mahalanobis"</code>, <code>"mahalanobis_robust"</code>, <code>"mcd"</code>, <code>"ics"</code>,
+<code>"optics"</code> or <code>"lof"</code>.</p></dd>
+
+
 <dt>threshold</dt>
 <dd><p>A list containing the threshold values for each method (e.g.
 <code>list('mahalanobis' = 7, 'cook' = 1)</code>), above which an observation is
 considered as outlier. If <code>NULL</code>, default values will be used (see
 'Details'). If a numeric value is given, it will be used as the threshold
 for any of the method run.</p></dd>
+
+
+<dt>ID</dt>
+<dd><p>Optional, to report an ID column along with the row number.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A logical vector of the detected outliers with a nice printing
+    
+
+<p>A logical vector of the detected outliers with a nice printing
 method: a check (message) on whether outliers were detected or not. The
 information on the distance measure and whether or not an observation is
-considered as outlier can be recovered with the <code>as.data.frame</code>function.</p>
+considered as outlier can be recovered with the <a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></p>
+
+
+<p>function. Note that the function will (silently) return a vector of <code>FALSE</code></p>
+
+
+<p>for non-supported data types such as character strings.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -147,13 +197,24 @@ could be:</p>
 in the 'performance' R package; Lüdecke et al., 2021) obtained via the joint
 application of multiple outliers detection algorithms (Z-scores, Iglewicz,
 1993; Interquartile range (IQR); Mahalanobis distance, Cabana, 2019; Robust
-Mahalanobis distance, Gnanadesikan &amp; Kettenring, 1972; Minimum Covariance
+Mahalanobis distance, Gnanadesikan and Kettenring, 1972; Minimum Covariance
 Determinant, Leys et al., 2018; Invariant Coordinate Selection, Archimbaud et
 al., 2018; OPTICS, Ankerst et al., 1999; Isolation Forest, Liu et al. 2008;
 and Local Outlier Factor, Breunig et al., 2000), we excluded n participants
 that were classified as outliers by at least half of the methods used."</em></p>
-<div class="section">
-<h3 id="model-specific-methods">Model-specific methods<a class="anchor" aria-label="anchor" href="#model-specific-methods"></a></h3>
+    </div>
+    <div class="section level2">
+    <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
+    <p>There is also a
+<a href="https://easystats.github.io/see/articles/performance.html" class="external-link"><code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>-method</a>
+implemented in the
+<a href="https://easystats.github.io/see/" class="external-link"><span class="pkg">see</span>-package</a>. <strong>Please
+note</strong> that the range of the distance-values along the y-axis is re-scaled
+to range from 0 to 1.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="model-specific-methods">Model-specific methods<a class="anchor" aria-label="anchor" href="#model-specific-methods"></a></h2>
+    
 
 <ul><li><p><strong>Cook's Distance</strong>:
 Among outlier detection methods, Cook's distance and leverage are less
@@ -164,19 +225,19 @@ of an F distribution with p and n-p degrees of freedom, the median point of
 the quantile distribution can be used as a cut-off (Bollen, 1985). A common
 approximation or heuristic is to use 4 divided by the numbers of
 observations, which usually corresponds to a lower threshold (i.e., more
-outliers are detected). This only works for Frequentist models. For Bayesian
+outliers are detected). This only works for frequentist models. For Bayesian
 models, see <code>pareto</code>.</p></li>
 <li><p><strong>Pareto</strong>:
 The reliability and approximate convergence of Bayesian models can be
 assessed using the estimates for the shape parameter k of the generalized
 Pareto distribution. If the estimated tail shape parameter k exceeds 0.5, the
-user should be warned, although in practice the authors of the <code>loo</code>
+user should be warned, although in practice the authors of the <strong>loo</strong>
 package observed good performance for values of k up to 0.7 (the default
 threshold used by <code>performance</code>).</p></li>
 </ul></div>
-
-<div class="section">
-<h3 id="univariate-methods">Univariate methods<a class="anchor" aria-label="anchor" href="#univariate-methods"></a></h3>
+    <div class="section level2">
+    <h2 id="univariate-methods">Univariate methods<a class="anchor" aria-label="anchor" href="#univariate-methods"></a></h2>
+    
 
 <ul><li><p><strong>Z-scores</strong> <code>("zscore", "zscore_robust")</code>:
 The Z-score, or standard score, is a way of describing a data point as
@@ -184,24 +245,27 @@ deviance from a central value, in terms of standard deviations from the mean
 (<code>"zscore"</code>) or, as it is here the case (<code>"zscore_robust"</code>) by
 default (Iglewicz, 1993), in terms of Median Absolute Deviation (MAD) from
 the median (which are robust measures of dispersion and centrality). The
-default threshold to classify outliers is 1.959 (<code>threshold = list("zscore" = 1.959)</code>), corresponding to the 2.5\<!-- % (\code{qnorm(0.975)}) -->
-most extreme observations (assuming the data is normally distributed).
-Importantly, the Z-score method is univariate: it is computed column by
-column. If a dataframe is passed, the Z-score is calculated for each
-variable separately, and the maximum (absolute) Z-score is kept for each
-observations. Thus, all observations that are extreme on at least one
-variable might be detected as outliers. Thus, this method is not suited for
-high dimensional data (with many columns), returning too liberal results
-(detecting many outliers).</p></li>
+default threshold to classify outliers is 1.959 (<code>threshold = list("zscore" = 1.959)</code>),
+corresponding to the 2.5% (<code>qnorm(0.975)</code>) most extreme observations
+(assuming the data is normally distributed). Importantly, the Z-score
+method is univariate: it is computed column by column. If a dataframe is
+passed, the Z-score is calculated for each variable separately, and the
+maximum (absolute) Z-score is kept for each observations. Thus, all
+observations that are extreme on at least one variable might be detected
+as outliers. Thus, this method is not suited for high dimensional data
+(with many columns), returning too liberal results (detecting many outliers).</p></li>
 <li><p><strong>IQR</strong> <code>("iqr")</code>:
 Using the IQR (interquartile range) is a robust method developed by John
 Tukey, which often appears in box-and-whisker plots (e.g., in
-<code>geom_boxplot</code>). The interquartile range is the range between the first
+<a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">ggplot2::geom_boxplot</a>). The interquartile range is the range between the first
 and the third quartiles. Tukey considered as outliers any data point that
-fell outside of either 1.5 times (the default threshold) the IQR below the
-first or above the third quartile. Similar to the Z-score method, this is a
-univariate method for outliers detection, returning outliers detected for at
-least one column, and might thus not be suited to high dimensional data.</p></li>
+fell outside of either 1.5 times (the default threshold is 1.7) the IQR below
+the first or above the third quartile. Similar to the Z-score method, this is
+a univariate method for outliers detection, returning outliers detected for
+at least one column, and might thus not be suited to high dimensional data.
+The distance score for the IQR is the absolute deviation from the median of
+the upper and lower IQR thresholds. Then, this value is divided by the IQR
+threshold, to “standardize” it and facilitate interpretation.</p></li>
 <li><p><strong>CI</strong> <code>("ci", "eti", "hdi", "bci")</code>:
 Another univariate method is to compute, for each variable, some sort of
 "confidence" interval and consider as outliers values lying beyond the edges
@@ -209,13 +273,16 @@ of that interval. By default, <code>"ci"</code> computes the Equal-Tailed Interv
 (<code>"eti"</code>), but other types of intervals are available, such as Highest
 Density Interval (<code>"hdi"</code>) or the Bias Corrected and Accelerated
 Interval (<code>"bci"</code>). The default threshold is <code>0.95</code>, considering
-as outliers all observations that are outside the 95\<!-- % CI on any of the -->
+as outliers all observations that are outside the 95% CI on any of the
 variable. See <code><a href="https://easystats.github.io/bayestestR/reference/ci.html" class="external-link">bayestestR::ci()</a></code> for more details
-about the intervals.</p></li>
+about the intervals. The distance score for the CI methods is the absolute
+deviation from the median of the upper and lower CI thresholds. Then, this
+value is divided by the difference between the upper and lower CI bounds
+divided by two, to “standardize” it and facilitate interpretation.</p></li>
 </ul></div>
-
-<div class="section">
-<h3 id="multivariate-methods">Multivariate methods<a class="anchor" aria-label="anchor" href="#multivariate-methods"></a></h3>
+    <div class="section level2">
+    <h2 id="multivariate-methods">Multivariate methods<a class="anchor" aria-label="anchor" href="#multivariate-methods"></a></h2>
+    
 
 <ul><li><p><strong>Mahalanobis Distance</strong>:
 Mahalanobis distance (Mahalanobis, 1930) is often used for multivariate
@@ -223,7 +290,7 @@ outliers detection as this distance takes into account the shape of the
 observations. The default <code>threshold</code> is often arbitrarily set to some
 deviation (in terms of SD or MAD) from the mean (or median) of the
 Mahalanobis distance. However, as the Mahalanobis distance can be
-approximated by a Chi squared distribution (Rousseeuw &amp; Van Zomeren, 1990),
+approximated by a Chi squared distribution (Rousseeuw and Van Zomeren, 1990),
 we can use the alpha quantile of the chi-square distribution with k degrees
 of freedom (k being the number of columns). By default, the alpha threshold
 is set to 0.025 (corresponding to the 2.5\<!-- % most extreme observations; -->
@@ -231,9 +298,9 @@ Cabana, 2019). This criterion is a natural extension of the median plus or
 minus a coefficient times the MAD method (Leys et al., 2013).</p></li>
 <li><p><strong>Robust Mahalanobis Distance</strong>:
 A robust version of Mahalanobis distance using an Orthogonalized
-Gnanadesikan-Kettenring pairwise estimator (Gnanadesikan &amp; Kettenring,
-1972). Requires the <span class="pkg">bigutilsr</span> package. See the
-<code><a href="https://rdrr.io/pkg/bigutilsr/man/covrob_ogk.html" class="external-link">bigutilsr::dist_ogk()</a></code> function.</p></li>
+Gnanadesikan-Kettenring pairwise estimator (Gnanadesikan and Kettenring,
+1972). Requires the <strong>bigutilsr</strong> package. See the <code><a href="https://rdrr.io/pkg/bigutilsr/man/covrob_ogk.html" class="external-link">bigutilsr::dist_ogk()</a></code>
+function.</p></li>
 <li><p><strong>Minimum Covariance Determinant (MCD)</strong>:
 Another robust version of Mahalanobis. Leys et al. (2018) argue that
 Mahalanobis Distance is not a robust way to determine outliers, as it uses
@@ -248,7 +315,7 @@ The outlier are detected using ICS, which by default uses an alpha threshold
 of 0.025 (corresponding to the 2.5\<!-- % most extreme observations) as a cut-off -->
 value for outliers classification. Refer to the help-file of
 <code><a href="https://rdrr.io/pkg/ICSOutlier/man/ics.outlier.html" class="external-link">ICSOutlier::ics.outlier()</a></code> to get more details about this procedure.
-Note that <code>method = "ics"</code> requires both <span class="pkg">ICS</span> and <span class="pkg">ICSOutlier</span>
+Note that <code>method = "ics"</code> requires both <strong>ICS</strong> and <strong>ICSOutlier</strong>
 to be installed, and that it takes some time to compute the results.</p></li>
 <li><p><strong>OPTICS</strong>:
 The Ordering Points To Identify the Clustering Structure (OPTICS) algorithm
@@ -256,203 +323,268 @@ The Ordering Points To Identify the Clustering Structure (OPTICS) algorithm
 clustering technique that can be used for outliers detection). The threshold
 argument is passed as <code>minPts</code>, which corresponds to the minimum size
 of a cluster. By default, this size is set at 2 times the number of columns
-(Sander et al., 1998). Compared to the others techniques, that will always
+(Sander et al., 1998). Compared to the other techniques, that will always
 detect several outliers (as these are usually defined as a percentage of
 extreme values), this algorithm functions in a different manner and won't
 always detect outliers. Note that <code>method = "optics"</code> requires the
-<span class="pkg">dbscan</span> package to be installed, and that it takes some time to compute
+<strong>dbscan</strong> package to be installed, and that it takes some time to compute
 the results.</p></li>
-<li><p><strong>Isolation Forest</strong>:
-The outliers are detected using the anomaly score of an isolation forest (a
-class of random forest). The default threshold of 0.025 will classify as
-outliers the observations located at <code>qnorm(1-0.025) * MAD)</code> (a robust
-equivalent of SD) of the median (roughly corresponding to the 2.5\<!-- % most -->
-extreme observations). Requires the <span class="pkg">solitude</span> package.</p></li>
 <li><p><strong>Local Outlier Factor</strong>:
-Based on a K nearest neighbours algorithm, LOF compares the local density of
-an point to the local densities of its neighbors instead of computing a
+Based on a K nearest neighbors algorithm, LOF compares the local density of
+a point to the local densities of its neighbors instead of computing a
 distance from the center (Breunig et al., 2000). Points that have a
 substantially lower density than their neighbors are considered outliers. A
 LOF score of approximately 1 indicates that density around the point is
 comparable to its neighbors. Scores significantly larger than 1 indicate
 outliers. The default threshold of 0.025 will classify as outliers the
 observations located at <code>qnorm(1-0.025) * SD)</code> of the log-transformed
-LOF distance. Requires the <span class="pkg">dbscan</span> package.</p></li>
+LOF distance. Requires the <strong>dbscan</strong> package.</p></li>
 </ul></div>
+    <div class="section level2">
+    <h2 id="threshold-specification">Threshold specification<a class="anchor" aria-label="anchor" href="#threshold-specification"></a></h2>
+    
 
-<div class="section">
-<h3 id="threshold-specification">Threshold specification<a class="anchor" aria-label="anchor" href="#threshold-specification"></a></h3>
+
 <p>Default thresholds are currently specified as follows:</p>
-<div class="sourceCode"><pre><code><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  zscore <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">0.025</span><span class="op">)</span>,
-  iqr <span class="op">=</span> <span class="fl">1.5</span>,
-  ci <span class="op">=</span> <span class="fl">0.95</span>,
-  cook <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Fdist.html" class="external-link">qf</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,
-  pareto <span class="op">=</span> <span class="fl">0.7</span>,
-  mahalanobis <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html" class="external-link">qchisq</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">0.025</span>, df <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,
-  robust <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html" class="external-link">qchisq</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">0.025</span>, df <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,
-  mcd <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html" class="external-link">qchisq</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">0.025</span>, df <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,
-  ics <span class="op">=</span> <span class="fl">0.025</span>,
-  optics <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  iforest <span class="op">=</span> <span class="fl">0.025</span>,
-  lof <span class="op">=</span> <span class="fl">0.025</span>
-<span class="op">)</span></code></pre></div>
-</div>
-
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="at">zscore =</span> stats<span class="sc">::</span><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span> <span class="sc">/</span> <span class="dv">2</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="at">zscore_robust =</span> stats<span class="sc">::</span><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span> <span class="sc">/</span> <span class="dv">2</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="at">iqr =</span> <span class="fl">1.7</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="at">ci =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="at">eti =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="at">hdi =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="at">bci =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  <span class="at">cook =</span> stats<span class="sc">::</span><span class="fu">qf</span>(<span class="fl">0.5</span>, <span class="fu">ncol</span>(x), <span class="fu">nrow</span>(x) <span class="sc">-</span> <span class="fu">ncol</span>(x)),</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  <span class="at">pareto =</span> <span class="fl">0.7</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  <span class="at">mahalanobis =</span> stats<span class="sc">::</span><span class="fu">qchisq</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>, <span class="at">df =</span> <span class="fu">ncol</span>(x)),</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  <span class="at">mahalanobis_robust =</span> stats<span class="sc">::</span><span class="fu">qchisq</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>, <span class="at">df =</span> <span class="fu">ncol</span>(x)),</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>  <span class="at">mcd =</span> stats<span class="sc">::</span><span class="fu">qchisq</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>, <span class="at">df =</span> <span class="fu">ncol</span>(x)),</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>  <span class="at">ics =</span> <span class="fl">0.001</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>  <span class="at">optics =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">ncol</span>(x),</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>  <span class="at">lof =</span> <span class="fl">0.001</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
-    <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>There is also a
-<a href="https://easystats.github.io/see/articles/performance.html" class="external-link"><code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>-method</a>
-implemented in the
-<a href="https://easystats.github.io/see/" class="external-link"><span class="pkg">see</span>-package</a>. <strong>Please
-note</strong> that the range of the distance-values along the y-axis is re-scaled
-to range from 0 to 1.</p>
+    <h2 id="meta-analysis-models">Meta-analysis models<a class="anchor" aria-label="anchor" href="#meta-analysis-models"></a></h2>
+    
+
+<p>For meta-analysis models (e.g. objects of class <code>rma</code> from the <em>metafor</em>
+package or <code>metagen</code> from package <em>meta</em>), studies are defined as outliers
+when their confidence interval lies outside the confidence interval of the
+pooled effect.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     
-<ul><li><p>Archimbaud, A., Nordhausen, K., &amp; Ruiz-Gazen, A. (2018). ICS for
+<ul><li><p>Archimbaud, A., Nordhausen, K., and Ruiz-Gazen, A. (2018). ICS for
 multivariate outlier detection with application to quality control.
-Computational Statistics &amp; Data Analysis, 128, 184-199.
+Computational Statistics and Data Analysis, 128, 184-199.
 <a href="https://doi.org/10.1016/j.csda.2018.06.011" class="external-link">doi:10.1016/j.csda.2018.06.011</a></p></li>
-<li><p>Gnanadesikan, R., &amp; Kettenring, J. R. (1972). Robust estimates, residuals,
+<li><p>Gnanadesikan, R., and Kettenring, J. R. (1972). Robust estimates, residuals,
 and outlier detection with multiresponse data. Biometrics, 81-124.</p></li>
-<li><p>Bollen, K. A., &amp; Jackman, R. W. (1985). Regression diagnostics: An
+<li><p>Bollen, K. A., and Jackman, R. W. (1985). Regression diagnostics: An
 expository treatment of outliers and influential cases. Sociological Methods
-&amp; Research, 13(4), 510-542.</p></li>
-<li><p>Cabana, E., Lillo, R. E., &amp; Laniado, H. (2019). Multivariate outlier
+and Research, 13(4), 510-542.</p></li>
+<li><p>Cabana, E., Lillo, R. E., and Laniado, H. (2019). Multivariate outlier
 detection based on a robust Mahalanobis distance with shrinkage estimators.
 arXiv preprint arXiv:1904.02596.</p></li>
 <li><p>Cook, R. D. (1977). Detection of influential observation in linear
 regression. Technometrics, 19(1), 15-18.</p></li>
-<li><p>Iglewicz, B., &amp; Hoaglin, D. C. (1993). How to detect and handle outliers
+<li><p>Iglewicz, B., and Hoaglin, D. C. (1993). How to detect and handle outliers
 (Vol. 16). Asq Press.</p></li>
-<li><p>Leys, C., Klein, O., Dominicy, Y., &amp; Ley, C. (2018). Detecting
+<li><p>Leys, C., Klein, O., Dominicy, Y., and Ley, C. (2018). Detecting
 multivariate outliers: Use a robust variant of Mahalanobis distance. Journal
 of Experimental Social Psychology, 74, 150-156.</p></li>
-<li><p>Liu, F. T., Ting, K. M., &amp; Zhou, Z. H. (2008, December). Isolation forest.
+<li><p>Liu, F. T., Ting, K. M., and Zhou, Z. H. (2008, December). Isolation forest.
 In 2008 Eighth IEEE International Conference on Data Mining (pp. 413-422).
 IEEE.</p></li>
-<li><p>Lüdecke, D., Ben-Shachar, M. S., Patil, I., Waggoner, P., &amp; Makowski, D.
+<li><p>Lüdecke, D., Ben-Shachar, M. S., Patil, I., Waggoner, P., and Makowski, D.
 (2021). performance: An R package for assessment, comparison and testing of
 statistical models. Journal of Open Source Software, 6(60), 3139.
 <a href="https://doi.org/10.21105/joss.03139" class="external-link">doi:10.21105/joss.03139</a></p></li>
-<li><p>Rousseeuw, P. J., &amp; Van Zomeren, B. C. (1990). Unmasking multivariate
+<li><p>Rousseeuw, P. J., and Van Zomeren, B. C. (1990). Unmasking multivariate
 outliers and leverage points. Journal of the American Statistical
 association, 85(411), 633-639.</p></li>
 </ul></div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p>Other functions to check model assumptions and and assess model quality: 
+<code><a href="check_autocorrelation.html">check_autocorrelation</a>()</code>,
+<code><a href="check_collinearity.html">check_collinearity</a>()</code>,
+<code><a href="check_convergence.html">check_convergence</a>()</code>,
+<code><a href="check_heteroscedasticity.html">check_heteroscedasticity</a>()</code>,
+<code><a href="check_homogeneity.html">check_homogeneity</a>()</code>,
+<code><a href="check_model.html">check_model</a>()</code>,
+<code><a href="check_overdispersion.html">check_overdispersion</a>()</code>,
+<code><a href="check_predictions.html">check_predictions</a>()</code>,
+<code><a href="check_singularity.html">check_singularity</a>()</code>,
+<code><a href="check_zeroinflation.html">check_zeroinflation</a>()</code></p></div>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="co"># Size nrow(data) = 32</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># For single variables ------------------------------------------------------</span></span>
-<span class="r-in"><span class="va">outliers_list</span> <span class="op">&lt;-</span> <span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">mpg</span><span class="op">)</span> <span class="co"># Find outliers</span></span>
-<span class="r-in"><span class="va">outliers_list</span> <span class="co"># Show the row index of the outliers</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">Warning: 4 outliers detected (cases 18, 19, 20, 28).</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="co"># Size nrow(data) = 32</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># For single variables ------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="va">outliers_list</span> <span class="op">&lt;-</span> <span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">mpg</span><span class="op">)</span> <span class="co"># Find outliers</span></span></span>
+<span class="r-in"><span><span class="va">outliers_list</span> <span class="co"># Show the row index of the outliers</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: No outliers detected.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- Based on the following method and threshold: zscore_robust (3.291).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- For variable: data$mpg</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">outliers_list</span><span class="op">)</span> <span class="co"># The object is a binary vector...</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 1 0 0 0 0</span>
-<span class="r-in"><span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="op">!</span><span class="va">outliers_list</span>, <span class="op">]</span> <span class="co"># And can be used to filter a dataframe</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">filtered_data</span><span class="op">)</span> <span class="co"># New size, 28 (4 outliers removed)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 28</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Find all observations beyond +/- 2 SD</span></span>
-<span class="r-in"><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">mpg</span>, method <span class="op">=</span> <span class="st">"zscore"</span>, threshold <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">Warning: 2 outliers detected (cases 18, 20).</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># For dataframes ------------------------------------------------------</span></span>
-<span class="r-in"><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># It works the same way on dataframes</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">Warning: 1 outliers detected (cases 9).</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">outliers_list</span><span class="op">)</span> <span class="co"># The object is a binary vector...</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span>
+<span class="r-in"><span><span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="op">!</span><span class="va">outliers_list</span>, <span class="op">]</span> <span class="co"># And can be used to filter a dataframe</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">filtered_data</span><span class="op">)</span> <span class="co"># New size, 28 (4 outliers removed)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Find all observations beyond +/- 2 SD</span></span></span>
+<span class="r-in"><span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">mpg</span>, method <span class="op">=</span> <span class="st">"zscore"</span>, threshold <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">2 outliers detected: cases 18, 20.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- Based on the following method and threshold: zscore (2).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- For variable: data$mpg.</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># You can also use multiple methods at once</span></span>
-<span class="r-in"><span class="va">outliers_list</span> <span class="op">&lt;-</span> <span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="st">"mahalanobis"</span>,</span>
-<span class="r-in">  <span class="st">"iqr"</span>,</span>
-<span class="r-in">  <span class="st">"zscore"</span></span>
-<span class="r-in"><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">outliers_list</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">Warning: 6 outliers detected (cases 9, 15, 16, 17, 20, 31).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Outliers per variable (zscore): </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Using `as.data.frame()`, we can access more details!</span></span>
-<span class="r-in"><span class="va">outliers_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">outliers_list</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">outliers_info</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Distance_Zscore Outlier_Zscore Distance_IQR Outlier_IQR Distance_Mahalanobis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1.189901              0            0           0             8.946673</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        1.189901              0            0           0             8.287933</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        1.224858              0            0           0             8.937150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        1.122152              0            0           0             6.096726</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        1.043081              0            0           0             5.429061</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        1.564608              0            0           0             8.877558</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Outlier_Mahalanobis Outlier</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   0       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                   0       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                   0       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                   0       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                   0       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   0       0</span>
-<span class="r-in"><span class="va">outliers_info</span><span class="op">$</span><span class="va">Outlier</span> <span class="co"># Including the probability of being an outlier</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`data$mpg`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Row Distance_Zscore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  18        2.042389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  20        2.291272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># For dataframes ------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># It works the same way on dataframes</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: No outliers detected.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- Based on the following method and threshold: mahalanobis (31.264).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- For variables: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># You can also use multiple methods at once</span></span></span>
+<span class="r-in"><span><span class="va">outliers_list</span> <span class="op">&lt;-</span> <span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"mahalanobis"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"iqr"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"zscore"</span></span></span>
+<span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">outliers_list</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: No outliers detected.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- Based on the following methods and thresholds: mahalanobis (3.291), iqr (2), zscore (31.264).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- For variables: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using `as.data.frame()`, we can access more details!</span></span></span>
+<span class="r-in"><span><span class="va">outliers_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">outliers_list</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">outliers_info</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Row Distance_Zscore Outlier_Zscore Distance_IQR Outlier_IQR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1        1.189901              0    0.4208483           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2        1.189901              0    0.2941176           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   3        1.224858              0    0.5882353           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   4        1.122152              0    0.5882353           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   5        1.043081              0    0.3915954           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   6        1.564608              0    0.6809025           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Distance_Mahalanobis Outlier_Mahalanobis Outlier</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             8.946673                   0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2             8.287933                   0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3             8.937150                   0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4             6.096726                   0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5             5.429061                   0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6             8.877558                   0       0</span>
+<span class="r-in"><span><span class="va">outliers_info</span><span class="op">$</span><span class="va">Outlier</span> <span class="co"># Including the probability of being an outlier</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] 0.6666667 0.6666667 0.6666667 0.3333333 0.3333333 0.6666667 0.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.0000000 0.3333333 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] 0.0000000 0.3333333 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [22] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] 0.0000000 0.3333333 0.6666667 0.0000000</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># And we can be more stringent in our outliers removal process</span></span>
-<span class="r-in"><span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="va">outliers_info</span><span class="op">$</span><span class="va">Outlier</span> <span class="op">&lt;</span> <span class="fl">0.1</span>, <span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># We can run the function stratified by groups using `{dplyr}` package:</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://nathaneastwood.github.io/poorman/" class="external-link">"poorman"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">iris</span> <span class="op"><a href="https://nathaneastwood.github.io/poorman/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://nathaneastwood.github.io/poorman/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://nathaneastwood.github.io/poorman/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu">check_outliers</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: poorman</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   I'd seen my father. He was a poor man, and I watched him do astonishing things.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     - Sidney Poitier</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘poorman’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     filter, lag</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">Warning: 4 outliers detected (cases 42, 44, 69, 119).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] 0.0000000 0.0000000 0.3333333 0.0000000</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># And we can be more stringent in our outliers removal process</span></span></span>
+<span class="r-in"><span><span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="va">outliers_info</span><span class="op">$</span><span class="va">Outlier</span> <span class="op">&lt;</span> <span class="fl">0.1</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># We can run the function stratified by groups using `{datawizard}` package:</span></span></span>
+<span class="r-in"><span><span class="va">group_iris</span> <span class="op">&lt;-</span> <span class="fu">datawizard</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/datawizard/reference/data_group.html" class="external-link">data_group</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"Species"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">group_iris</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: No outliers detected.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- Based on the following method and threshold: mahalanobis (20).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- For variables: Sepal.Length, Sepal.Width, Petal.Length, Petal.Width</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># You can also run all the methods</span></span>
-<span class="r-in"><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># For statistical models ---------------------------------------------</span></span>
-<span class="r-in"><span class="co"># select only mpg and disp (continuous)</span></span>
-<span class="r-in"><span class="va">mt1</span> <span class="op">&lt;-</span> <span class="va">mtcars</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span>
-<span class="r-in"><span class="co"># create some fake outliers and attach outliers to main df</span></span>
-<span class="r-in"><span class="va">mt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">mt1</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">  mpg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37</span>, <span class="fl">40</span><span class="op">)</span>, disp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span><span class="op">)</span>,</span>
-<span class="r-in">  hp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">110</span>, <span class="fl">120</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># fit model with outliers</span></span>
-<span class="r-in"><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mt2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">outliers_list</span> <span class="op">&lt;-</span> <span class="fu">check_outliers</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://easystats.github.io/see/" class="external-link">"see"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">outliers_list</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">insight</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/insight/reference/get_data.html" class="external-link">get_data</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span><span class="op">[</span><span class="va">outliers_list</span>, <span class="op">]</span> <span class="co"># Show outliers data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">"MASS"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu">check_outliers</span><span class="op">(</span><span class="va">model</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mahalabonis"</span>, <span class="st">"mcd"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st">"ICS"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="co"># This one takes some seconds to finish...</span></span>
-<span class="r-in">  <span class="fu">check_outliers</span><span class="op">(</span><span class="va">model</span>, method <span class="op">=</span> <span class="st">"ics"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># You can also run all the methods</span></span></span>
+<span class="r-in"><span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">3 outliers detected: cases 9, 29, 31.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- Based on the following methods and thresholds: zscore_robust (3.291),</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">  iqr (2), ci (1), cook (1), pareto (0.7), mahalanobis (31.264),</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">  mahalanobis_robust (31.264), mcd (31.264), ics (0.001), optics (22), lof</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">  (0.001).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- For variables: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">Note: Outliers were classified as such by</span> <span style="color: #BBBB00;">at least half of the selected methods. </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> The following observations were considered outliers for two or more</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   variables by at least one of the selected methods:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Row n_Zscore_robust n_IQR n_ci n_Mahalanobis_robust          n_MCD</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    3               2     0    0                    0              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    9               2     1    1       (Multivariate) (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   18               2     0    0                    0              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   19               2     0    2                    0 (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   20               2     0    2                    0              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   26               2     0    0                    0              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   28               2     0    1       (Multivariate) (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   31               2     2    2       (Multivariate) (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   32               2     0    0                    0              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   8               1     0    0                    0 (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  21               1     0    0       (Multivariate)              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  27               1     0    0       (Multivariate) (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  29               1     0    1       (Multivariate) (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  30               1     0    0                    0 (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   7               0     0    0       (Multivariate) (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  24               0     0    0       (Multivariate) (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             n_ICS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 (Multivariate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16              0</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># For statistical models ---------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co"># select only mpg and disp (continuous)</span></span></span>
+<span class="r-in"><span><span class="va">mt1</span> <span class="op">&lt;-</span> <span class="va">mtcars</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="co"># create some fake outliers and attach outliers to main df</span></span></span>
+<span class="r-in"><span><span class="va">mt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">mt1</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  mpg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37</span>, <span class="fl">40</span><span class="op">)</span>, disp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300</span>, <span class="fl">400</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  hp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">110</span>, <span class="fl">120</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># fit model with outliers</span></span></span>
+<span class="r-in"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mt2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">outliers_list</span> <span class="op">&lt;-</span> <span class="fu">check_outliers</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://easystats.github.io/see/" class="external-link">"see"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">outliers_list</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-plt img"><img src="check_outliers-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">insight</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/insight/reference/get_data.html" class="external-link">get_data</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span><span class="op">[</span><span class="va">outliers_list</span>, <span class="op">]</span> <span class="co"># Show outliers data</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               disp mpg  hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Maserati Bora  301  15 335</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2              400  40 120</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -460,11 +592,11 @@ association, 85(411), 633-639.</p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by <a href="https://github.com/strengejacke" class="external-link">Daniel Lüdecke</a>, <a href="https://dominiquemakowski.github.io/" class="external-link">Dominique Makowski</a>, <a href="https://github.com/mattansb" class="external-link">Mattan S. Ben-Shachar</a>, <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>, Philip Waggoner, <a href="https://wiernik.org/" class="external-link">Brenton M. Wiernik</a>.</p>
+  <p></p><p>Developed by <a href="https://github.com/strengejacke" class="external-link">Daniel Lüdecke</a>, <a href="https://dominiquemakowski.github.io/" class="external-link">Dominique Makowski</a>, <a href="https://home.msbstats.info/" class="external-link">Mattan S. Ben-Shachar</a>, <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>, Philip Waggoner, <a href="https://wiernik.org/" class="external-link">Brenton M. Wiernik</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
 </div>
 
     </footer></div>

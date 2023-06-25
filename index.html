@@ -5,15 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Utilities for computing measures to assess model quality,
-    which are not directly provided by Rs base or stats' packages.
-    These include e.g. measures like r-squared, intraclass correlation
-    coefficient (Nakagawa, Johnson &amp; Schielzeth (2017)
-    &lt;doi:10.1098/rsif.2017.0213&gt;), root mean squared error or functions to
-    check models for overdispersion, singularity or zero-inflation and
-    more. Functions apply to a large variety of regression models,
-    including generalized linear models, mixed effects models and Bayesian
-    models.">
+<meta name="description" content="Utilities for computing measures to assess model quality, which are not directly provided by Rs base or stats' packages. These include e.g. measures like r-squared, intraclass correlation coefficient (Nakagawa, Johnson &amp; Schielzeth (2017) &lt;doi:10.1098/rsif.2017.0213&gt;), root mean squared error or functions to check models for overdispersion, singularity or zero-inflation and more. Functions apply to a large variety of regression models, including generalized linear models, mixed effects models and Bayesian models. References: Lüdecke et al. (2021) &lt;doi:10.21105/joss.03139&gt;.">
 <title>Assessment of Regression Models Performance • performance</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -22,19 +14,14 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.6/font.css" rel="stylesheet">
+<link href="deps/JetBrains_Mono-0.4.6/font.css" rel="stylesheet">
+<link href="deps/Roboto_Slab-0.4.6/font.css" rel="stylesheet">
+<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Assessment of Regression Models Performance">
-<meta property="og:description" content="Utilities for computing measures to assess model quality,
-    which are not directly provided by Rs base or stats' packages.
-    These include e.g. measures like r-squared, intraclass correlation
-    coefficient (Nakagawa, Johnson &amp; Schielzeth (2017)
-    &lt;doi:10.1098/rsif.2017.0213&gt;), root mean squared error or functions to
-    check models for overdispersion, singularity or zero-inflation and
-    more. Functions apply to a large variety of regression models,
-    including generalized linear models, mixed effects models and Bayesian
-    models.">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Assessment of Regression Models Performance">
+<meta property="og:description" content="Utilities for computing measures to assess model quality, which are not directly provided by Rs base or stats' packages. These include e.g. measures like r-squared, intraclass correlation coefficient (Nakagawa, Johnson &amp; Schielzeth (2017) &lt;doi:10.1098/rsif.2017.0213&gt;), root mean squared error or functions to check models for overdispersion, singularity or zero-inflation and more. Functions apply to a large variety of regression models, including generalized linear models, mixed effects models and Bayesian models. References: Lüdecke et al. (2021) &lt;doi:10.21105/joss.03139&gt;.">
 <meta property="og:image" content="https://easystats.github.io/performance/reference/figures/card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@easystats4u">
@@ -48,11 +35,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-default navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
     <a class="navbar-brand me-2" href="index.html">performance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.10.4.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,23 +48,26 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item">
-  <a class="nav-link" href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html" aria-label="Reference">
+    <span class="fa fa fa fa-file-code"></span>
      
+    Reference
   </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="news/index.html">News</a>
+  <a class="nav-link" href="articles/index.html" aria-label="Articles">
+    <span class="fa fa fa fa-book-reader"></span>
+     
+    Articles
+  </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="reference/index.html">Features</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="articles/compare.html">Compare, Test and Select Models</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="articles/r2.html">Explained Variance (R-Squared)</a>
+  <a class="nav-link" href="news/index.html" aria-label="News">
+    <span class="fa fa fa fa-newspaper"></span>
+     
+    News
+  </a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -85,6 +75,26 @@
 </form>
 
       <ul class="navbar-nav">
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--easystats" aria-label="easystats">
+    <span class="fab fa fab fa-r-project"></span>
+     
+    easystats
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdown--easystats">
+    <a class="external-link dropdown-item" href="https://easystats.github.io/bayestestR/">bayestestR</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/correlation/">correlation</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/datawizard/">datawizard</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/easystats/">easystats</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/effectsize/">effectsize</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/insight/">insight</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/modelbased/">modelbased</a>
+    <a class="dropdown-item" href="https://easystats.github.io/performance/">performance</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/parameters/">parameters</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/report/">report</a>
+    <a class="external-link dropdown-item" href="https://easystats.github.io/see/">see</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="external-link nav-link" href="http://twitter.com/easystats4u" aria-label="Twitter">
     <span class="fa fa-twitter"></span>
@@ -92,8 +102,8 @@
   </a>
 </li>
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/easystats/performance/" aria-label="GitHub">
-    <span class="fa fa-github"></span>
+  <a class="external-link nav-link" href="https://github.com/easystats/performance/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -109,14 +119,14 @@
 <img src="logo.png" class="logo" alt=""><h1 id="performance-">performance <a class="anchor" aria-label="anchor" href="#performance-"></a>
 </h1>
 </div>
-
+<p><a href="https://doi.org/10.21105/joss.03139" class="external-link"><img src="https://joss.theoj.org/papers/10.21105/joss.03139/status.svg" alt="DOI"></a> <a href="https://cran.r-project.org/package=performance" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/performance" alt="downloads"></a> <a href="https://cranlogs.r-pkg.org/" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/performance" alt="total"></a> <a href="https://CRAN.R-project.org/package=performance" class="external-link"><img src="https://tinyverse.netlify.com/badge/performance" alt="status"></a></p>
 <p><strong><em>Test if your model is a good model!</em></strong></p>
 <p>A crucial aspect when building regression models is to evaluate the quality of modelfit. It is important to investigate how well models fit to the data and which fit indices to report. Functions to create diagnostic plots or to compute fit measures do exist, however, mostly spread over different packages. There is no unique and consistent approach to assess the model quality for different kind of models.</p>
 <p>The primary goal of the <strong>performance</strong> package is to fill this gap and to provide utilities for computing <strong>indices of model quality</strong> and <strong>goodness of fit</strong>. These include measures like r-squared (R2), root mean squared error (RMSE) or intraclass correlation coefficient (ICC) , but also functions to check (mixed) models for overdispersion, zero-inflation, convergence or singularity.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p><a href="https://cran.r-project.org/package=performance" class="external-link"><img src="http://www.r-pkg.org/badges/version/performance" alt="CRAN"></a> <a href="https://easystats.r-universe.dev" class="external-link"><img src="https://easystats.r-universe.dev/badges/performance" alt="performance status badge"></a> <a href="https://github.com/easystats/performance/actions" class="external-link"><img src="https://github.com/easystats/performance/workflows/R-check/badge.svg?branch=master" alt="R check"></a></p>
+<p><a href="https://cran.r-project.org/package=performance" class="external-link"><img src="http://www.r-pkg.org/badges/version/performance" alt="CRAN"></a> <a href="https://easystats.r-universe.dev" class="external-link"><img src="https://easystats.r-universe.dev/badges/performance" alt="performance status badge"></a> <a href="https://github.com/easystats/performance/actions" class="external-link"><img src="https://github.com/easystats/performance/workflows/R-CMD-check/badge.svg?branch=main" alt="R check"></a></p>
 <p>The <em>performance</em> package is available on CRAN, while its latest development version is available on R-universe (from <em>rOpenSci</em>).</p>
 <table class="table">
 <colgroup>
@@ -144,36 +154,41 @@
 </table>
 <p>Once you have downloaded the package, you can then load it using:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://easystats.github.io/performance/">"performance"</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://easystats.github.io/performance/">"performance"</a></span><span class="op">)</span></span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Instead of <code><a href="https://easystats.github.io/performance/">library(performance)</a></code>, use <code><a href="https://easystats.github.io/easystats/" class="external-link">library(easystats)</a></code>. This will make all features of the easystats-ecosystem available.</p>
+<p>To stay updated, use <code>easystats::install_latest()</code>.</p>
+</blockquote>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite performance in publications use:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"performance"</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   Lüdecke et al., (2021). performance: An R Package for Assessment, Comparison and</span>
-<span class="co">#&gt;   Testing of Statistical Models. Journal of Open Source Software, 6(60), 3139.</span>
-<span class="co">#&gt;   https://doi.org/10.21105/joss.03139</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {{performance}: An {R} Package for Assessment, Comparison and Testing of Statistical Models},</span>
-<span class="co">#&gt;     author = {Daniel Lüdecke and Mattan S. Ben-Shachar and Indrajeet Patil and Philip Waggoner and Dominique Makowski},</span>
-<span class="co">#&gt;     year = {2021},</span>
-<span class="co">#&gt;     journal = {Journal of Open Source Software},</span>
-<span class="co">#&gt;     volume = {6},</span>
-<span class="co">#&gt;     number = {60},</span>
-<span class="co">#&gt;     pages = {3139},</span>
-<span class="co">#&gt;     doi = {10.21105/joss.03139},</span>
-<span class="co">#&gt;   }</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"performance"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; To cite package 'performance' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Lüdecke et al., (2021). performance: An R Package for Assessment, Comparison and</span></span>
+<span><span class="co">#&gt;   Testing of Statistical Models. Journal of Open Source Software, 6(60), 3139.</span></span>
+<span><span class="co">#&gt;   https://doi.org/10.21105/joss.03139</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {{performance}: An {R} Package for Assessment, Comparison and Testing of Statistical Models},</span></span>
+<span><span class="co">#&gt;     author = {Daniel Lüdecke and Mattan S. Ben-Shachar and Indrajeet Patil and Philip Waggoner and Dominique Makowski},</span></span>
+<span><span class="co">#&gt;     year = {2021},</span></span>
+<span><span class="co">#&gt;     journal = {Journal of Open Source Software},</span></span>
+<span><span class="co">#&gt;     volume = {6},</span></span>
+<span><span class="co">#&gt;     number = {60},</span></span>
+<span><span class="co">#&gt;     pages = {3139},</span></span>
+<span><span class="co">#&gt;     doi = {10.21105/joss.03139},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
-<p><a href="https://easystats.github.io/performance/"><img src="https://img.shields.io/badge/documentation-performance-orange.svg?colorB=E91E63" alt="Documentation"></a> <a href="https://easystats.github.io/blog/posts/" class="external-link"><img src="https://img.shields.io/badge/blog-easystats-orange.svg?colorB=FF9800" alt="Blog"></a> <a href="https://easystats.github.io/performance/reference/index.html"><img src="https://img.shields.io/badge/features-performance-orange.svg?colorB=2196F3" alt="Features"></a></p>
 <p>There is a nice introduction into the package on <a href="https://www.youtube.com/watch?v=EPIxQ5i5oxs" class="external-link">youtube</a>.</p>
 </div>
 <div class="section level2">
@@ -189,44 +204,48 @@
 <p><strong>performance</strong> has a generic <code><a href="reference/r2.html">r2()</a></code> function, which computes the r-squared for many different models, including mixed effects and Bayesian regression models.</p>
 <p><code><a href="reference/r2.html">r2()</a></code> returns a list containing values related to the “most appropriate” r-squared for the given model.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span>
-<span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # R2 for Linear Regression</span>
-<span class="co">#&gt;        R2: 0.830</span>
-<span class="co">#&gt;   adj. R2: 0.819</span>
-
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span>
-<span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # R2 for Logistic Regression</span>
-<span class="co">#&gt;   Tjur's R2: 0.705</span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">housing</span><span class="op">)</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/polr.html" class="external-link">polr</a></span><span class="op">(</span><span class="va">Sat</span> <span class="op">~</span> <span class="va">Infl</span> <span class="op">+</span> <span class="va">Type</span> <span class="op">+</span> <span class="va">Cont</span>, weights <span class="op">=</span> <span class="va">Freq</span>, data <span class="op">=</span> <span class="va">housing</span><span class="op">)</span>
-<span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt;   Nagelkerke's R2: 0.108</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # R2 for Linear Regression</span></span>
+<span><span class="co">#&gt;        R2: 0.830</span></span>
+<span><span class="co">#&gt;   adj. R2: 0.819</span></span>
+<span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # R2 for Logistic Regression</span></span>
+<span><span class="co">#&gt;   Tjur's R2: 0.705</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">housing</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/polr.html" class="external-link">polr</a></span><span class="op">(</span><span class="va">Sat</span> <span class="op">~</span> <span class="va">Infl</span> <span class="op">+</span> <span class="va">Type</span> <span class="op">+</span> <span class="va">Cont</span>, weights <span class="op">=</span> <span class="va">Freq</span>, data <span class="op">=</span> <span class="va">housing</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Nagelkerke's R2: 0.108</span></span></code></pre></div>
 <p>The different R-squared measures can also be accessed directly via functions like <code><a href="reference/r2_bayes.html">r2_bayes()</a></code>, <code><a href="reference/r2_coxsnell.html">r2_coxsnell()</a></code> or <code><a href="reference/r2_nagelkerke.html">r2_nagelkerke()</a></code> (see a full list of functions <a href="https://easystats.github.io/performance/reference/index.html#section-r-functions">here</a>).</p>
 <p>For mixed models, the <em>conditional</em> and <em>marginal</em> R-squared are returned. The <em>marginal R-squared</em> considers only the variance of the fixed effects and indicates how much of the model’s variance is explained by the fixed effects part only. The <em>conditional R-squared</em> takes both the fixed and random effects into account and indicates how much of the model’s variance is explained by the “complete” model.</p>
 <p>For frequentist mixed models, <code><a href="reference/r2.html">r2()</a></code> (resp. <code><a href="reference/r2_nakagawa.html">r2_nakagawa()</a></code>) computes the <em>mean</em> random effect variances, thus <code><a href="reference/r2.html">r2()</a></code> is also appropriate for mixed models with more complex random effects structures, like random slopes or nested random effects (Johnson 2014; Nakagawa, Johnson, and Schielzeth 2017).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/rstanarm/" class="external-link">rstanarm</a></span><span class="op">)</span>
-
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glmer.html" class="external-link">stan_glmer</a></span><span class="op">(</span><span class="va">Petal.Length</span> <span class="op">~</span> <span class="va">Petal.Width</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Species</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">iris</span>, cores <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # Bayesian R2 with Compatibility Interval</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   Conditional R2: 0.953 (95% CI [0.941, 0.963])</span>
-<span class="co">#&gt;      Marginal R2: 0.824 (95% CI [0.713, 0.896])</span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sleepstudy</span><span class="op">)</span>
-<span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # R2 for Mixed Models</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   Conditional R2: 0.799</span>
-<span class="co">#&gt;      Marginal R2: 0.279</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/rstanarm/" class="external-link">rstanarm</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glmer.html" class="external-link">stan_glmer</a></span><span class="op">(</span></span>
+<span>  <span class="va">Petal.Length</span> <span class="op">~</span> <span class="va">Petal.Width</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Species</span><span class="op">)</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">iris</span>,</span>
+<span>  cores <span class="op">=</span> <span class="fl">4</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Bayesian R2 with Compatibility Interval</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Conditional R2: 0.953 (95% CI [0.942, 0.963])</span></span>
+<span><span class="co">#&gt;      Marginal R2: 0.824 (95% CI [0.721, 0.899])</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sleepstudy</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/r2.html">r2</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # R2 for Mixed Models</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Conditional R2: 0.799</span></span>
+<span><span class="co">#&gt;      Marginal R2: 0.279</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="intraclass-correlation-coefficient-icc">Intraclass Correlation Coefficient (ICC)<a class="anchor" aria-label="anchor" href="#intraclass-correlation-coefficient-icc"></a>
@@ -234,24 +253,24 @@
 <p>Similar to R-squared, the ICC provides information on the explained variance and can be interpreted as “the proportion of the variance explained by the grouping structure in the population” (Hox 2010).</p>
 <p><code><a href="reference/icc.html">icc()</a></code> calculates the ICC for various mixed model objects, including <code>stanreg</code> models.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sleepstudy</span><span class="op">)</span>
-<span class="fu"><a href="reference/icc.html">icc</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # Intraclass Correlation Coefficient</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;      Adjusted ICC: 0.722</span>
-<span class="co">#&gt;   Conditional ICC: 0.521</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sleepstudy</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/icc.html">icc</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Intraclass Correlation Coefficient</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     Adjusted ICC: 0.722</span></span>
+<span><span class="co">#&gt;   Unadjusted ICC: 0.521</span></span></code></pre></div>
 <p>…and models of class <code>brmsfit</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/paul-buerkner/brms" class="external-link">brms</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/brms/man/brm.html" class="external-link">brm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">wt</span> <span class="op">|</span> <span class="va">gear</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/paul-buerkner/brms" class="external-link">brms</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/brms/man/brm.html" class="external-link">brm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">wt</span> <span class="op">|</span> <span class="va">gear</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/icc.html">icc</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # Intraclass Correlation Coefficient</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;      Adjusted ICC: 0.930</span>
-<span class="co">#&gt;   Conditional ICC: 0.771</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/icc.html">icc</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Intraclass Correlation Coefficient</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     Adjusted ICC: 0.930</span></span>
+<span><span class="co">#&gt;   Unadjusted ICC: 0.771</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -262,15 +281,15 @@
 </h4>
 <p>Overdispersion occurs when the observed variance in the data is higher than the expected variance from the model assumption (for Poisson, variance roughly equals the mean of an outcome). <code><a href="reference/check_overdispersion.html">check_overdispersion()</a></code> checks if a count model (including mixed models) is overdispersed or not.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/glmmTMB/glmmTMB" class="external-link">glmmTMB</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Salamanders</span><span class="op">)</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">count</span> <span class="op">~</span> <span class="va">spp</span> <span class="op">+</span> <span class="va">mined</span>, family <span class="op">=</span> <span class="va">poisson</span>, data <span class="op">=</span> <span class="va">Salamanders</span><span class="op">)</span>
-<span class="fu"><a href="reference/check_overdispersion.html">check_overdispersion</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # Overdispersion test</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;        dispersion ratio =    2.946</span>
-<span class="co">#&gt;   Pearson's Chi-Squared = 1873.710</span>
-<span class="co">#&gt;                 p-value =  &lt; 0.001</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/glmmTMB/glmmTMB" class="external-link">glmmTMB</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Salamanders</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">count</span> <span class="op">~</span> <span class="va">spp</span> <span class="op">+</span> <span class="va">mined</span>, family <span class="op">=</span> <span class="va">poisson</span>, data <span class="op">=</span> <span class="va">Salamanders</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/check_overdispersion.html">check_overdispersion</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Overdispersion test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;        dispersion ratio =    2.946</span></span>
+<span><span class="co">#&gt;   Pearson's Chi-Squared = 1873.710</span></span>
+<span><span class="co">#&gt;                 p-value =  &lt; 0.001</span></span></code></pre></div>
 <p>Overdispersion can be fixed by either modelling the dispersion parameter (not possible with all packages), or by choosing a different distributional family (like Quasi-Poisson, or negative binomial, see (Gelman and Hill 2007)).</p>
 </div>
 <div class="section level4">
@@ -279,13 +298,13 @@
 <p>Zero-inflation (in (Quasi-)Poisson models) is indicated when the amount of observed zeros is larger than the amount of predicted zeros, so the model is <em>underfitting</em> zeros. In such cases, it is recommended to use negative binomial or zero-inflated models.</p>
 <p>Use <code><a href="reference/check_zeroinflation.html">check_zeroinflation()</a></code> to check if zero-inflation is present in the fitted model.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">count</span> <span class="op">~</span> <span class="va">spp</span> <span class="op">+</span> <span class="va">mined</span>, family <span class="op">=</span> <span class="va">poisson</span>, data <span class="op">=</span> <span class="va">Salamanders</span><span class="op">)</span>
-<span class="fu"><a href="reference/check_zeroinflation.html">check_zeroinflation</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; # Check for zero-inflation</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;    Observed zeros: 387</span>
-<span class="co">#&gt;   Predicted zeros: 298</span>
-<span class="co">#&gt;             Ratio: 0.77</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">count</span> <span class="op">~</span> <span class="va">spp</span> <span class="op">+</span> <span class="va">mined</span>, family <span class="op">=</span> <span class="va">poisson</span>, data <span class="op">=</span> <span class="va">Salamanders</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/check_zeroinflation.html">check_zeroinflation</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Check for zero-inflation</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;    Observed zeros: 387</span></span>
+<span><span class="co">#&gt;   Predicted zeros: 298</span></span>
+<span><span class="co">#&gt;             Ratio: 0.77</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="check-for-singular-model-fits">Check for singular model fits<a class="anchor" aria-label="anchor" href="#check-for-singular-model-fits"></a>
@@ -293,23 +312,27 @@
 <p>A “singular” model fit means that some dimensions of the variance-covariance matrix have been estimated as exactly zero. This often occurs for mixed models with overly complex random effects structures.</p>
 <p><code><a href="reference/check_singularity.html">check_singularity()</a></code> checks mixed models (of class <code>lme</code>, <code>merMod</code>, <code>glmmTMB</code> or <code>MixMod</code>) for singularity, and returns <code>TRUE</code> if the model fit is singular.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sleepstudy</span><span class="op">)</span>
-
-<span class="co"># prepare data</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="va">sleepstudy</span><span class="op">$</span><span class="va">mygrp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">180</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">sleepstudy</span><span class="op">$</span><span class="va">mysubgrp</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">filter_group</span> <span class="op">&lt;-</span> <span class="va">sleepstudy</span><span class="op">$</span><span class="va">mygrp</span> <span class="op">==</span> <span class="va">i</span>
-    <span class="va">sleepstudy</span><span class="op">$</span><span class="va">mysubgrp</span><span class="op">[</span><span class="va">filter_group</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">filter_group</span><span class="op">)</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="co"># fit strange model</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">mygrp</span><span class="op">/</span><span class="va">mysubgrp</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sleepstudy</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/check_singularity.html">check_singularity</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sleepstudy</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># prepare data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">sleepstudy</span><span class="op">$</span><span class="va">mygrp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">180</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sleepstudy</span><span class="op">$</span><span class="va">mysubgrp</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">filter_group</span> <span class="op">&lt;-</span> <span class="va">sleepstudy</span><span class="op">$</span><span class="va">mygrp</span> <span class="op">==</span> <span class="va">i</span></span>
+<span>  <span class="va">sleepstudy</span><span class="op">$</span><span class="va">mysubgrp</span><span class="op">[</span><span class="va">filter_group</span><span class="op">]</span> <span class="op">&lt;-</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">filter_group</span><span class="op">)</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># fit strange model</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span></span>
+<span>  <span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">mygrp</span> <span class="op">/</span> <span class="va">mysubgrp</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">sleepstudy</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/check_singularity.html">check_singularity</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>Remedies to cure issues with singular fits can be found <a href="https://easystats.github.io/performance/reference/check_singularity.html">here</a>.</p>
 </div>
 <div class="section level4">
@@ -318,23 +341,23 @@
 <p>Linear models assume constant error variance (homoskedasticity).</p>
 <p>The <code><a href="reference/check_heteroscedasticity.html">check_heteroscedasticity()</a></code> functions assess if this assumption has been violated:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">dist</span> <span class="op">~</span> <span class="va">speed</span>, data <span class="op">=</span> <span class="va">cars</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/check_heteroscedasticity.html">check_heteroscedasticity</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Heteroscedasticity (non-constant error variance) detected (p = 0.031).</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">dist</span> <span class="op">~</span> <span class="va">speed</span>, data <span class="op">=</span> <span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/check_heteroscedasticity.html">check_heteroscedasticity</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Heteroscedasticity (non-constant error variance) detected (p = 0.031).</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="comprehensive-visualization-of-model-checks">Comprehensive visualization of model checks<a class="anchor" aria-label="anchor" href="#comprehensive-visualization-of-model-checks"></a>
 </h4>
 <p><strong>performance</strong> provides many functions to check model assumptions, like <code><a href="reference/check_collinearity.html">check_collinearity()</a></code>, <code><a href="reference/check_normality.html">check_normality()</a></code> or <code><a href="reference/check_heteroscedasticity.html">check_heteroscedasticity()</a></code>. To get a comprehensive check, use <code><a href="reference/check_model.html">check_model()</a></code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># defining a model</span>
-<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">am</span> <span class="op">+</span> <span class="va">gear</span> <span class="op">+</span> <span class="va">vs</span> <span class="op">*</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span>
-
-<span class="co"># checking model assumptions</span>
-<span class="fu"><a href="reference/check_model.html">check_model</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/unnamed-chunk-14-1.png" width="60%"></p>
+<code class="sourceCode R"><span><span class="co"># defining a model</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">am</span> <span class="op">+</span> <span class="va">gear</span> <span class="op">+</span> <span class="va">vs</span> <span class="op">*</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># checking model assumptions</span></span>
+<span><span class="fu"><a href="reference/check_model.html">check_model</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/unnamed-chunk-14-1.png" width="80%"></p>
 </div>
 </div>
 <div class="section level3">
@@ -345,38 +368,38 @@
 <h4 id="linear-model">Linear model<a class="anchor" aria-label="anchor" href="#linear-model"></a>
 </h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span>
-<span class="fu"><a href="reference/model_performance.html">model_performance</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
-<span class="co">#&gt; # Indices of model performance</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; AIC     |     BIC |    R2 | R2 (adj.) |  RMSE | Sigma</span>
-<span class="co">#&gt; -----------------------------------------------------</span>
-<span class="co">#&gt; 156.010 | 161.873 | 0.830 |     0.819 | 2.444 | 2.568</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">cyl</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/model_performance.html">model_performance</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Indices of model performance</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; AIC     |    AICc |     BIC |    R2 | R2 (adj.) |  RMSE | Sigma</span></span>
+<span><span class="co">#&gt; ---------------------------------------------------------------</span></span>
+<span><span class="co">#&gt; 156.010 | 157.492 | 161.873 | 0.830 |     0.819 | 2.444 | 2.568</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="logistic-regression">Logistic regression<a class="anchor" aria-label="anchor" href="#logistic-regression"></a>
 </h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">mpg</span>, data <span class="op">=</span> <span class="va">mtcars</span>, family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span>
-<span class="fu"><a href="reference/model_performance.html">model_performance</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span>
-<span class="co">#&gt; # Indices of model performance</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; AIC    |    BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP</span>
-<span class="co">#&gt; --------------------------------------------------------------------------------------------</span>
-<span class="co">#&gt; 31.298 | 35.695 |     0.478 | 0.359 | 0.934 |    0.395 |   -14.903 |           0.095 | 0.743</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">mpg</span>, data <span class="op">=</span> <span class="va">mtcars</span>, family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/model_performance.html">model_performance</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Indices of model performance</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; AIC    |   AICc |    BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP</span></span>
+<span><span class="co">#&gt; -----------------------------------------------------------------------------------------------------</span></span>
+<span><span class="co">#&gt; 31.298 | 32.155 | 35.695 |     0.478 | 0.359 | 1.000 |    0.395 |   -14.903 |           0.095 | 0.743</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="linear-mixed-model">Linear mixed model<a class="anchor" aria-label="anchor" href="#linear-mixed-model"></a>
 </h4>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span>
-<span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sleepstudy</span><span class="op">)</span>
-<span class="fu"><a href="reference/model_performance.html">model_performance</a></span><span class="op">(</span><span class="va">m3</span><span class="op">)</span>
-<span class="co">#&gt; # Indices of model performance</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; AIC      |     AICc |      BIC | R2 (cond.) | R2 (marg.) |   ICC |   RMSE |  Sigma</span>
-<span class="co">#&gt; ----------------------------------------------------------------------------------</span>
-<span class="co">#&gt; 1755.628 | 1756.114 | 1774.786 |      0.799 |      0.279 | 0.722 | 23.438 | 25.592</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></span>
+<span><span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sleepstudy</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/model_performance.html">model_performance</a></span><span class="op">(</span><span class="va">m3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Indices of model performance</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; AIC      |     AICc |      BIC | R2 (cond.) | R2 (marg.) |   ICC |   RMSE |  Sigma</span></span>
+<span><span class="co">#&gt; ----------------------------------------------------------------------------------</span></span>
+<span><span class="co">#&gt; 1755.628 | 1756.114 | 1774.786 |      0.799 |      0.279 | 0.722 | 23.438 | 25.592</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -384,41 +407,41 @@
 </h3>
 <p>The <code><a href="reference/compare_performance.html">compare_performance()</a></code> function can be used to compare the performance and quality of several models (including models of different types).</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">17</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">25</span>, <span class="fl">13</span>, <span class="fl">12</span><span class="op">)</span>
-<span class="va">outcome</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/gl.html" class="external-link">gl</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">9</span><span class="op">)</span>
-<span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/gl.html" class="external-link">gl</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="va">m4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">counts</span> <span class="op">~</span> <span class="va">outcome</span> <span class="op">+</span> <span class="va">treatment</span>, family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">poisson</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/compare_performance.html">compare_performance</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span>, <span class="va">m4</span><span class="op">)</span>
-<span class="co">#&gt; # Comparison of Model Performance Indices</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Name |   Model |      AIC | AIC weights |      BIC | BIC weights |   RMSE |  Sigma | Score_log | Score_spherical |    R2 | R2 (adj.) | Tjur's R2 | Log_loss |   PCP |     AICc | AICc weights | R2 (cond.) | R2 (marg.) |   ICC | Nagelkerke's R2</span>
-<span class="co">#&gt; -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="co">#&gt; m1   |      lm |  156.010 |     &lt; 0.001 |  161.873 |     &lt; 0.001 |  2.444 |  2.568 |           |                 | 0.830 |     0.819 |           |          |       |          |              |            |            |       |                </span>
-<span class="co">#&gt; m2   |     glm |   31.298 |       1.000 |   35.695 |       1.000 |  0.359 |  0.934 |   -14.903 |           0.095 |       |           |     0.478 |    0.395 | 0.743 |          |              |            |            |       |                </span>
-<span class="co">#&gt; m3   | lmerMod | 1763.986 |     &lt; 0.001 | 1783.144 |     &lt; 0.001 | 23.438 | 25.592 |           |                 |       |           |           |          |       | 1764.471 |              |      0.799 |      0.279 | 0.722 |                </span>
-<span class="co">#&gt; m4   |     glm |   56.761 |     &lt; 0.001 |   57.747 |     &lt; 0.001 |  3.043 |  1.132 |    -2.598 |           0.324 |       |           |           |          |       |          |              |            |            |       |           0.657</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">17</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">25</span>, <span class="fl">13</span>, <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="va">outcome</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/gl.html" class="external-link">gl</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">9</span><span class="op">)</span></span>
+<span><span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/gl.html" class="external-link">gl</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">m4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">counts</span> <span class="op">~</span> <span class="va">outcome</span> <span class="op">+</span> <span class="va">treatment</span>, family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">poisson</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/compare_performance.html">compare_performance</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span>, <span class="va">m4</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Comparison of Model Performance Indices</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Name |   Model |  AIC (weights) | AICc (weights) |  BIC (weights) |   RMSE |  Sigma | Score_log | Score_spherical |    R2 | R2 (adj.) | Tjur's R2 | Log_loss |   PCP | R2 (cond.) | R2 (marg.) |   ICC | Nagelkerke's R2</span></span>
+<span><span class="co">#&gt; ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span></span>
+<span><span class="co">#&gt; m1   |      lm |  156.0 (&lt;.001) |  157.5 (&lt;.001) |  161.9 (&lt;.001) |  2.444 |  2.568 |           |                 | 0.830 |     0.819 |           |          |       |            |            |       |                </span></span>
+<span><span class="co">#&gt; m2   |     glm |   31.3 (&gt;.999) |   32.2 (&gt;.999) |   35.7 (&gt;.999) |  0.359 |  1.000 |   -14.903 |           0.095 |       |           |     0.478 |    0.395 | 0.743 |            |            |       |                </span></span>
+<span><span class="co">#&gt; m3   | lmerMod | 1764.0 (&lt;.001) | 1764.5 (&lt;.001) | 1783.1 (&lt;.001) | 23.438 | 25.592 |           |                 |       |           |           |          |       |      0.799 |      0.279 | 0.722 |                </span></span>
+<span><span class="co">#&gt; m4   |     glm |   56.8 (&lt;.001) |   76.8 (&lt;.001) |   57.7 (&lt;.001) |  3.043 |  1.000 |    -2.598 |           0.324 |       |           |           |          |       |            |            |       |           0.657</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="general-index-of-model-performance">General index of model performance<a class="anchor" aria-label="anchor" href="#general-index-of-model-performance"></a>
 </h4>
 <p>One can also easily compute and a <a href="https://easystats.github.io/performance/reference/compare_performance.html#details"><strong>composite index</strong></a> of model performance and sort the models from the best one to the worse.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/compare_performance.html">compare_performance</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span>, <span class="va">m4</span>, rank <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; # Comparison of Model Performance Indices</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Name |   Model |   RMSE |  Sigma | AIC weights | BIC weights | Performance-Score</span>
-<span class="co">#&gt; --------------------------------------------------------------------------------</span>
-<span class="co">#&gt; m2   |     glm |  0.359 |  0.934 |       1.000 |       1.000 |           100.00%</span>
-<span class="co">#&gt; m4   |     glm |  3.043 |  1.132 |     &lt; 0.001 |     &lt; 0.001 |            46.89%</span>
-<span class="co">#&gt; m1   |      lm |  2.444 |  2.568 |     &lt; 0.001 |     &lt; 0.001 |            46.09%</span>
-<span class="co">#&gt; m3   | lmerMod | 23.438 | 25.592 |     &lt; 0.001 |     &lt; 0.001 |             0.00%</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/compare_performance.html">compare_performance</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span>, <span class="va">m4</span>, rank <span class="op">=</span> <span class="cn">TRUE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Comparison of Model Performance Indices</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Name |   Model |   RMSE |  Sigma | AIC weights | AICc weights | BIC weights | Performance-Score</span></span>
+<span><span class="co">#&gt; -----------------------------------------------------------------------------------------------</span></span>
+<span><span class="co">#&gt; m2   |     glm |  0.359 |  1.000 |       1.000 |        1.000 |       1.000 |           100.00%</span></span>
+<span><span class="co">#&gt; m4   |     glm |  3.043 |  1.000 |    2.96e-06 |     2.06e-10 |    1.63e-05 |            37.67%</span></span>
+<span><span class="co">#&gt; m1   |      lm |  2.444 |  2.568 |    8.30e-28 |     6.07e-28 |    3.99e-28 |            36.92%</span></span>
+<span><span class="co">#&gt; m3   | lmerMod | 23.438 | 25.592 |    0.00e+00 |     0.00e+00 |    0.00e+00 |             0.00%</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="visualisation-of-indices-of-models-performance">Visualisation of indices of models’ performance<a class="anchor" aria-label="anchor" href="#visualisation-of-indices-of-models-performance"></a>
 </h4>
 <p>Finally, we provide convenient visualisation (the <code>see</code> package must be installed).</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/compare_performance.html">compare_performance</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m4</span>, rank <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/compare_performance.html">compare_performance</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m4</span>, rank <span class="op">=</span> <span class="cn">TRUE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/unnamed-chunk-20-1.png" width="100%"></p>
 </div>
 </div>
@@ -427,33 +450,38 @@
 </h3>
 <p><code><a href="reference/test_performance.html">test_performance()</a></code> (and <code>test_bf</code>, its Bayesian sister) carries out the most relevant and appropriate tests based on the input (for instance, whether the models are nested or not).</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
-
-<span class="va">lm1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span>
-<span class="va">lm2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span> <span class="op">+</span> <span class="va">Petal.Length</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span>
-<span class="va">lm3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span> <span class="op">*</span> <span class="va">Sepal.Width</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span>
-<span class="va">lm4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span> <span class="op">*</span> <span class="va">Sepal.Width</span> <span class="op">+</span> <span class="va">Petal.Length</span> <span class="op">+</span> <span class="va">Petal.Width</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/test_performance.html">test_performance</a></span><span class="op">(</span><span class="va">lm1</span>, <span class="va">lm2</span>, <span class="va">lm3</span>, <span class="va">lm4</span><span class="op">)</span>
-<span class="co">#&gt; Name | Model |     BF | Omega2 | p (Omega2) |    LR | p (LR)</span>
-<span class="co">#&gt; ------------------------------------------------------------</span>
-<span class="co">#&gt; lm1  |    lm |        |        |            |       |       </span>
-<span class="co">#&gt; lm2  |    lm | &gt; 1000 |   0.69 |     &lt; .001 | -6.25 | &lt; .001</span>
-<span class="co">#&gt; lm3  |    lm | &gt; 1000 |   0.36 |     &lt; .001 | -3.44 | &lt; .001</span>
-<span class="co">#&gt; lm4  |    lm | &gt; 1000 |   0.73 |     &lt; .001 | -7.77 | &lt; .001</span>
-<span class="co">#&gt; Each model is compared to lm1.</span>
-
-<span class="fu"><a href="reference/test_performance.html">test_bf</a></span><span class="op">(</span><span class="va">lm1</span>, <span class="va">lm2</span>, <span class="va">lm3</span>, <span class="va">lm4</span><span class="op">)</span>
-<span class="co">#&gt; Bayes Factors for Model Comparison</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;       Model                                                    BF</span>
-<span class="co">#&gt; [lm2] Species + Petal.Length                             3.45e+26</span>
-<span class="co">#&gt; [lm3] Species * Sepal.Width                              4.69e+07</span>
-<span class="co">#&gt; [lm4] Species * Sepal.Width + Petal.Length + Petal.Width 7.58e+29</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; * Against Denominator: [lm1] Species</span>
-<span class="co">#&gt; *   Bayes Factor Type: BIC approximation</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lm1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
+<span><span class="va">lm2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span> <span class="op">+</span> <span class="va">Petal.Length</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
+<span><span class="va">lm3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span> <span class="op">*</span> <span class="va">Sepal.Width</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
+<span><span class="va">lm4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Species</span> <span class="op">*</span> <span class="va">Sepal.Width</span> <span class="op">+</span> <span class="va">Petal.Length</span> <span class="op">+</span> <span class="va">Petal.Width</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/test_performance.html">test_performance</a></span><span class="op">(</span><span class="va">lm1</span>, <span class="va">lm2</span>, <span class="va">lm3</span>, <span class="va">lm4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Name | Model |       BF | Omega2 | p (Omega2) |    LR | p (LR)</span></span>
+<span><span class="co">#&gt; --------------------------------------------------------------</span></span>
+<span><span class="co">#&gt; lm1  |    lm |          |        |            |       |       </span></span>
+<span><span class="co">#&gt; lm2  |    lm | 3.45e+26 |   0.69 |     &lt; .001 | -6.25 | &lt; .001</span></span>
+<span><span class="co">#&gt; lm3  |    lm | 4.69e+07 |   0.36 |     &lt; .001 | -3.44 | &lt; .001</span></span>
+<span><span class="co">#&gt; lm4  |    lm | 7.58e+29 |   0.73 |     &lt; .001 | -7.77 | &lt; .001</span></span>
+<span><span class="co">#&gt; Each model is compared to lm1.</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/test_performance.html">test_bf</a></span><span class="op">(</span><span class="va">lm1</span>, <span class="va">lm2</span>, <span class="va">lm3</span>, <span class="va">lm4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Bayes Factors for Model Comparison</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;       Model                                                    BF</span></span>
+<span><span class="co">#&gt; [lm2] Species + Petal.Length                             3.45e+26</span></span>
+<span><span class="co">#&gt; [lm3] Species * Sepal.Width                              4.69e+07</span></span>
+<span><span class="co">#&gt; [lm4] Species * Sepal.Width + Petal.Length + Petal.Width 7.58e+29</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; * Against Denominator: [lm1] Species</span></span>
+<span><span class="co">#&gt; *   Bayes Factor Type: BIC approximation</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="plotting-functions">Plotting Functions<a class="anchor" aria-label="anchor" href="#plotting-functions"></a>
+</h3>
+<p>Plotting functions are available through the <a href="https://easystats.github.io/see/articles/performance.html" class="external-link"><strong>see</strong> package</a>.</p>
 </div>
 </div>
 </div>
@@ -472,10 +500,18 @@
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-gelman_data_2007" class="csl-entry"><p>Gelman, Andrew, and Jennifer Hill. 2007. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Analytical Methods for Social Research. Cambridge ; New York: Cambridge University Press.</p></div>
-<div id="ref-hox_multilevel_2010" class="csl-entry"><p>Hox, J. J. 2010. <em>Multilevel Analysis: Techniques and Applications</em>. 2nd ed. Quantitative Methodology Series. New York: Routledge.</p></div>
-<div id="ref-johnson_extension_2014" class="csl-entry"><p>Johnson, Paul C. D. 2014. “Extension of Nakagawa &amp; Schielzeth’s R2 GLMM to Random Slopes Models.” Edited by Robert B. O’Hara. <em>Methods in Ecology and Evolution</em> 5 (9): 944–46. <a href="https://doi.org/10.1111/2041-210X.12225" class="external-link uri">https://doi.org/10.1111/2041-210X.12225</a>.</p></div>
-<div id="ref-nakagawa_coefficient_2017" class="csl-entry"><p>Nakagawa, Shinichi, Paul C. D. Johnson, and Holger Schielzeth. 2017. “The Coefficient of Determination R2 and Intra-Class Correlation Coefficient from Generalized Linear Mixed-Effects Models Revisited and Expanded.” <em>Journal of The Royal Society Interface</em> 14 (134): 20170213. <a href="https://doi.org/10.1098/rsif.2017.0213" class="external-link uri">https://doi.org/10.1098/rsif.2017.0213</a>.</p></div>
+<div id="ref-gelman_data_2007" class="csl-entry">
+Gelman, Andrew, and Jennifer Hill. 2007. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Analytical Methods for Social Research. Cambridge ; New York: Cambridge University Press.
+</div>
+<div id="ref-hox_multilevel_2010" class="csl-entry">
+Hox, J. J. 2010. <em>Multilevel Analysis: Techniques and Applications</em>. 2nd ed. Quantitative Methodology Series. New York: Routledge.
+</div>
+<div id="ref-johnson_extension_2014" class="csl-entry">
+Johnson, Paul C. D. 2014. “Extension of Nakagawa &amp; Schielzeth’s R2 GLMM to Random Slopes Models.” Edited by Robert B. O’Hara. <em>Methods in Ecology and Evolution</em> 5 (9): 944–46.
+</div>
+<div id="ref-nakagawa_coefficient_2017" class="csl-entry">
+Nakagawa, Shinichi, Paul C. D. Johnson, and Holger Schielzeth. 2017. “The Coefficient of Determination R2 and Intra-Class Correlation Coefficient from Generalized Linear Mixed-Effects Models Revisited and Expanded.” <em>Journal of The Royal Society Interface</em> 14 (134): 20170213.
+</div>
 </div>
 </div>
 </div>
@@ -486,6 +522,7 @@
 <li><a href="https://cloud.r-project.org/package=performance" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/easystats/performance/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/easystats/performance/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://easystats.github.io/easystats/index.html" class="external-link">Learn more</a></li>
 </ul>
 </div>
 
@@ -519,7 +556,7 @@
 <li>
 <a href="https://dominiquemakowski.github.io/" class="external-link">Dominique Makowski</a> <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0001-5375-9967" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
-<a href="https://github.com/mattansb" class="external-link">Mattan S. Ben-Shachar</a> <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-4287-4801" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://home.msbstats.info/" class="external-link">Mattan S. Ben-Shachar</a> <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-4287-4801" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
 <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a> <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0003-1995-6531" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Philip Waggoner <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-7825-7573" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
@@ -529,15 +566,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://doi.org/10.21105/joss.03139" class="external-link"><img src="https://joss.theoj.org/papers/10.21105/joss.03139/status.svg" alt="DOI"></a></li>
-<li><a href="https://cran.r-project.org/package=performance" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/performance" alt="downloads"></a></li>
-<li><a href="https://cranlogs.r-pkg.org/" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/performance" alt="total"></a></li>
-<li><a href="https://CRAN.R-project.org/package=performance" class="external-link"><img src="https://tinyverse.netlify.com/badge/performance" alt="status"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>
@@ -545,12 +574,12 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by <a href="https://github.com/strengejacke" class="external-link">Daniel Lüdecke</a>, <a href="https://dominiquemakowski.github.io/" class="external-link">Dominique Makowski</a>, <a href="https://github.com/mattansb" class="external-link">Mattan S. Ben-Shachar</a>, <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>, Philip Waggoner, <a href="https://wiernik.org/" class="external-link">Brenton M. Wiernik</a>.</p>
+<p>Developed by <a href="https://github.com/strengejacke" class="external-link">Daniel Lüdecke</a>, <a href="https://dominiquemakowski.github.io/" class="external-link">Dominique Makowski</a>, <a href="https://home.msbstats.info/" class="external-link">Mattan S. Ben-Shachar</a>, <a href="https://sites.google.com/site/indrajeetspatilmorality/" class="external-link">Indrajeet Patil</a>, Philip Waggoner, <a href="https://wiernik.org/" class="external-link">Brenton M. Wiernik</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
 </div>
 
     </footer>
