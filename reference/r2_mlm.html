@@ -83,19 +83,20 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The two indexes returned summarize model fit for the set of predictors
 given the system of responses. As compared to the default
-<a href="r2.html">r2</a> index, the indexes returned provide a single
-fit value for all responses.</p>
+<a href="r2.html">r2</a> index for multivariate linear models, the indexes
+returned by this function provide a single fit value collapsed across
+all responses.</p>
 <p>The two returned indexes were proposed by <em>Van den Burg and Lewis (1988)</em>
-as an extension of <em>Cramer and Nicewander (1979)</em>. Of the numerous indexes
-proposed across these two papers, and number of other metrics proposed
-elsewhere, only two metrics, the \(R_{xy}\) and \(P_{xy}\), are
-recommended for use by <em>Azen and Budescu (2006)</em>.</p>
+as an extension of the metrics proposed by <em>Cramer and Nicewander (1979)</em>.
+Of the numerous indexes proposed across these two papers, only two metrics,
+the \(R_{xy}\) and \(P_{xy}\), are recommended for use
+by <em>Azen and Budescu (2006)</em>.</p>
 <p>For a multivariate linear regression with \(p\) predictors and
-\(q\) responses where \(p &gt; q\), \(R_{xy}\) index is
+\(q\) responses where \(p &gt; q\), the \(R_{xy}\) index is
 computed as:</p>
 <p>$$R_{xy} = 1 - \prod_{i=1}^p (1 - \rho_i^2)$$</p>
 <p>Where \(\rho\) is a canonical variate from a
-<a href="https://rdrr.io/r/stats/cancor.html" class="external-link">canonical correlations</a> between the predictors and responses.
+<a href="https://rdrr.io/r/stats/cancor.html" class="external-link">canonical correlation</a> between the predictors and responses.
 This metric is symmetric and its value does not change when the roles of
 the variables as predictors or responses are swapped.</p>
 <p>The \(P_{xy}\) is computed as:</p>
