@@ -72,7 +72,7 @@ R2, pseudo-R2, or marginal / adjusted R2 values are returned.</p>
 <span><span class="fu">r2</span><span class="op">(</span><span class="va">model</span>, ci <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for class 'mlm'</span></span>
-<span><span class="fu">r2</span><span class="op">(</span><span class="va">model</span>, multivariate <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">r2</span><span class="op">(</span><span class="va">model</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for class 'merMod'</span></span>
 <span><span class="fu">r2</span><span class="op">(</span><span class="va">model</span>, ci <span class="op">=</span> <span class="cn">NULL</span>, tolerance <span class="op">=</span> <span class="fl">1e-05</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -101,9 +101,9 @@ confidence intervals for R2 are calculated.</p></dd>
 
 
 <dt id="arg-multivariate">multivariate<a class="anchor" aria-label="anchor" href="#arg-multivariate"></a></dt>
-<dd><p>Logical. Should R2 reported be by separated by
-response (FALSE) or combined across responses as computed by
-<code><a href="r2_mlm.html">r2_mlm</a></code> (TRUE).</p></dd>
+<dd><p>Logical. Should multiple R2 values be reported as
+separated by response (FALSE) or should a single R2 be reported as
+combined across responses computed by <code><a href="r2_mlm.html">r2_mlm</a></code> (TRUE).</p></dd>
 
 
 <dt id="arg-tolerance">tolerance<a class="anchor" aria-label="anchor" href="#arg-tolerance"></a></dt>
